@@ -1,0 +1,1450 @@
+/*
+Theme Name: KWL Coupon WP
+Theme URI: https://github.com/kenweill/kwl-coupon-wp
+Author: Ken Weill
+Author URI: https://github.com/kenweill
+Description: A free, open source, modern WordPress theme for coupon and deals websites. Beautiful by default. No paid plugins required. Fully customizable from logo to color schemes. GPL v2.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: kwl-coupon-wp
+Tags: coupons, deals, affiliate, minimal, fast, seo-friendly, customizable, responsive
+*/
+
+/* =============================================================================
+   TABLE OF CONTENTS
+   1. CSS Custom Properties (Design Tokens)
+   2. Base Reset
+   3. Typography
+   4. Layout
+   5. Header
+   6. Navigation
+   7. Hero / Homepage Banner
+   8. Store Cards
+   9. Coupon Cards
+   10. Category Grid
+   11. Single Store Page
+   12. Single Coupon
+   13. Sidebar
+   14. Search
+   15. Pagination
+   16. Footer
+   17. Admin Bar Offset
+   18. Utilities
+   19. Responsive
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   These are overridden by presets and the WordPress Customizer.
+   ============================================================================= */
+
+:root {
+
+  /* --- Brand Colors --- */
+  --cwp-primary:          #2563eb;   /* Main brand color */
+  --cwp-primary-hover:    #1d4ed8;   /* Hover state */
+  --cwp-primary-light:    #eff6ff;   /* Light tint for badges, highlights */
+  --cwp-secondary:        #64748b;   /* Secondary text, muted elements */
+  --cwp-accent:           #f59e0b;   /* Accent — badges, highlights */
+  --cwp-accent-hover:     #d97706;
+  --cwp-success:          #16a34a;   /* Verified badge, success states */
+  --cwp-danger:           #dc2626;   /* Expired, error states */
+  --cwp-warning:          #d97706;   /* Expiring soon */
+
+  /* --- Surfaces & Backgrounds --- */
+  --cwp-bg:               #f8fafc;   /* Page background */
+  --cwp-surface:          #ffffff;   /* Cards, panels */
+  --cwp-surface-hover:    #f1f5f9;   /* Card hover background */
+  --cwp-surface-alt:      #f1f5f9;   /* Alternate surface */
+  --cwp-border:           #e2e8f0;   /* Borders, dividers */
+  --cwp-border-focus:     #2563eb;   /* Focus rings */
+
+  /* --- Typography --- */
+  --cwp-text:             #0f172a;   /* Primary text */
+  --cwp-text-muted:       #64748b;   /* Secondary / muted text */
+  --cwp-text-light:       #94a3b8;   /* Placeholder, disabled */
+  --cwp-text-inverse:     #ffffff;   /* Text on dark backgrounds */
+  --cwp-font:             'Figtree', system-ui, -apple-system, sans-serif;
+  --cwp-font-mono:        'JetBrains Mono', 'Fira Code', monospace;
+  --cwp-font-size-base:   16px;
+  --cwp-line-height:      1.6;
+
+  /* --- Spacing --- */
+  --cwp-space-1:          4px;
+  --cwp-space-2:          8px;
+  --cwp-space-3:          12px;
+  --cwp-space-4:          16px;
+  --cwp-space-5:          20px;
+  --cwp-space-6:          24px;
+  --cwp-space-8:          32px;
+  --cwp-space-10:         40px;
+  --cwp-space-12:         48px;
+  --cwp-space-16:         64px;
+
+  /* --- Border Radius --- */
+  --cwp-radius-sm:        4px;
+  --cwp-radius:           8px;
+  --cwp-radius-md:        12px;
+  --cwp-radius-lg:        16px;
+  --cwp-radius-full:      9999px;
+
+  /* --- Shadows --- */
+  --cwp-shadow-sm:        0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --cwp-shadow:           0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --cwp-shadow-md:        0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --cwp-shadow-lg:        0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* --- Layout --- */
+  --cwp-container:        1200px;
+  --cwp-container-narrow: 800px;
+  --cwp-sidebar-width:    300px;
+  --cwp-header-height:    64px;
+
+  /* --- Transitions --- */
+  --cwp-transition:       150ms ease;
+  --cwp-transition-md:    250ms ease;
+
+  /* --- Z-index --- */
+  --cwp-z-dropdown:       100;
+  --cwp-z-sticky:         200;
+  --cwp-z-modal:          300;
+  --cwp-z-toast:          400;
+
+}
+
+
+/* =============================================================================
+   2. BASE RESET
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--cwp-font-size-base);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--cwp-font);
+  font-size: 1rem;
+  line-height: var(--cwp-line-height);
+  color: var(--cwp-text);
+  background-color: var(--cwp-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--cwp-primary);
+  text-decoration: none;
+  transition: color var(--cwp-transition);
+}
+
+a:hover {
+  color: var(--cwp-primary-hover);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--cwp-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--cwp-radius-sm);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--cwp-border);
+  margin: var(--cwp-space-6) 0;
+}
+
+
+/* =============================================================================
+   3. TYPOGRAPHY
+   ============================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--cwp-text);
+}
+
+h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); }
+h2 { font-size: clamp(1.375rem, 3vw, 1.75rem); }
+h3 { font-size: clamp(1.125rem, 2.5vw, 1.375rem); }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+p {
+  margin-bottom: var(--cwp-space-4);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+small {
+  font-size: 0.8125rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+code {
+  font-family: var(--cwp-font-mono);
+  font-size: 0.875em;
+  background: var(--cwp-surface-alt);
+  padding: 2px 6px;
+  border-radius: var(--cwp-radius-sm);
+  color: var(--cwp-primary);
+}
+
+
+/* =============================================================================
+   4. LAYOUT
+   ============================================================================= */
+
+.cwp-container {
+  width: 100%;
+  max-width: var(--cwp-container);
+  margin-inline: auto;
+  padding-inline: var(--cwp-space-6);
+}
+
+.cwp-container--narrow {
+  max-width: var(--cwp-container-narrow);
+}
+
+.cwp-layout {
+  display: grid;
+  grid-template-columns: 1fr var(--cwp-sidebar-width);
+  gap: var(--cwp-space-8);
+  align-items: start;
+}
+
+.cwp-layout--full {
+  grid-template-columns: 1fr;
+}
+
+.cwp-main {
+  min-width: 0; /* Prevent grid blowout */
+}
+
+.cwp-sidebar {
+  position: sticky;
+  top: calc(var(--cwp-header-height) + var(--cwp-space-6));
+}
+
+/* Grid systems */
+.cwp-grid {
+  display: grid;
+  gap: var(--cwp-space-5);
+}
+
+.cwp-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.cwp-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.cwp-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.cwp-grid--stores { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+.cwp-grid--coupons { grid-template-columns: 1fr; gap: var(--cwp-space-4); }
+
+/* Section spacing */
+.cwp-section {
+  padding-block: var(--cwp-space-10);
+}
+
+.cwp-section--sm {
+  padding-block: var(--cwp-space-6);
+}
+
+.cwp-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--cwp-space-6);
+}
+
+.cwp-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cwp-text);
+  position: relative;
+  padding-left: var(--cwp-space-3);
+}
+
+.cwp-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.1em;
+  background: var(--cwp-primary);
+  border-radius: var(--cwp-radius-full);
+}
+
+.cwp-section-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cwp-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-1);
+}
+
+.cwp-section-link:hover {
+  color: var(--cwp-primary-hover);
+}
+
+
+/* =============================================================================
+   5. HEADER
+   ============================================================================= */
+
+.cwp-header {
+  background: var(--cwp-surface);
+  border-bottom: 1px solid var(--cwp-border);
+  height: var(--cwp-header-height);
+  position: sticky;
+  top: 0;
+  z-index: var(--cwp-z-sticky);
+  box-shadow: var(--cwp-shadow-sm);
+}
+
+.cwp-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cwp-space-6);
+}
+
+/* Logo */
+.cwp-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-2);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.cwp-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.cwp-logo__text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cwp-text);
+  letter-spacing: -0.025em;
+}
+
+.cwp-logo__text span {
+  color: var(--cwp-primary);
+}
+
+/* Header search */
+.cwp-header__search {
+  flex: 1;
+  max-width: 480px;
+}
+
+/* Header actions */
+.cwp-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-3);
+  flex-shrink: 0;
+}
+
+/* Mobile menu toggle */
+.cwp-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--cwp-radius);
+  color: var(--cwp-text);
+  transition: background var(--cwp-transition);
+}
+
+.cwp-menu-toggle:hover {
+  background: var(--cwp-surface-alt);
+}
+
+.cwp-menu-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* =============================================================================
+   6. NAVIGATION
+   ============================================================================= */
+
+.cwp-nav {
+  background: var(--cwp-primary);
+}
+
+.cwp-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cwp-nav__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.cwp-nav__item {
+  display: block;
+  padding: var(--cwp-space-3) var(--cwp-space-5);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all var(--cwp-transition);
+  border-bottom: 2px solid transparent;
+}
+
+.cwp-nav__item:hover,
+.cwp-nav__item.active {
+  color: #ffffff;
+  background: rgba(255,255,255,0.1);
+  border-bottom-color: #ffffff;
+}
+
+
+/* =============================================================================
+   7. HERO / HOMEPAGE BANNER
+   ============================================================================= */
+
+.cwp-hero {
+  background: linear-gradient(135deg, var(--cwp-primary) 0%, var(--cwp-primary-hover) 100%);
+  padding-block: var(--cwp-space-12);
+  text-align: center;
+}
+
+.cwp-hero__title {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: var(--cwp-space-3);
+  letter-spacing: -0.025em;
+}
+
+.cwp-hero__subtitle {
+  font-size: 1.0625rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--cwp-space-8);
+}
+
+.cwp-hero__search {
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+
+/* =============================================================================
+   8. STORE CARDS
+   ============================================================================= */
+
+.cwp-store-card {
+  background: var(--cwp-surface);
+  border: 1px solid var(--cwp-border);
+  border-radius: var(--cwp-radius-md);
+  padding: var(--cwp-space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cwp-space-3);
+  text-align: center;
+  transition: all var(--cwp-transition-md);
+  text-decoration: none;
+  color: var(--cwp-text);
+}
+
+.cwp-store-card:hover {
+  border-color: var(--cwp-primary);
+  box-shadow: var(--cwp-shadow-md);
+  transform: translateY(-2px);
+  color: var(--cwp-text);
+}
+
+.cwp-store-card__logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: var(--cwp-radius);
+}
+
+.cwp-store-card__logo-placeholder {
+  width: 64px;
+  height: 64px;
+  background: var(--cwp-primary-light);
+  border-radius: var(--cwp-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cwp-primary);
+}
+
+.cwp-store-card__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cwp-text);
+}
+
+.cwp-store-card__count {
+  font-size: 0.8125rem;
+  color: var(--cwp-text-muted);
+}
+
+
+/* =============================================================================
+   9. COUPON CARDS
+   ============================================================================= */
+
+.cwp-coupon-card {
+  background: var(--cwp-surface);
+  border: 1px solid var(--cwp-border);
+  border-radius: var(--cwp-radius-md);
+  display: grid;
+  grid-template-columns: 88px 1fr auto;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  transition: box-shadow var(--cwp-transition-md);
+}
+
+.cwp-coupon-card:hover {
+  box-shadow: var(--cwp-shadow-md);
+}
+
+.cwp-coupon-card--expired {
+  opacity: 0.6;
+}
+
+/* Store logo column */
+.cwp-coupon-card__store {
+  padding: var(--cwp-space-5);
+  border-right: 1px solid var(--cwp-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  background: var(--cwp-surface-alt);
+}
+
+.cwp-coupon-card__store-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: var(--cwp-radius-sm);
+}
+
+.cwp-coupon-card__store-placeholder {
+  width: 52px;
+  height: 52px;
+  background: var(--cwp-primary-light);
+  border-radius: var(--cwp-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cwp-primary);
+}
+
+/* Content column */
+.cwp-coupon-card__content {
+  padding: var(--cwp-space-4) var(--cwp-space-5);
+  min-width: 0;
+}
+
+.cwp-coupon-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cwp-space-1);
+  margin-bottom: var(--cwp-space-2);
+}
+
+.cwp-coupon-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cwp-text);
+  margin-bottom: var(--cwp-space-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cwp-coupon-card__description {
+  font-size: 0.875rem;
+  color: var(--cwp-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: var(--cwp-space-3);
+}
+
+.cwp-coupon-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-4);
+  font-size: 0.8125rem;
+  color: var(--cwp-text-muted);
+}
+
+.cwp-coupon-card__expiry {
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-1);
+}
+
+.cwp-coupon-card__expiry--soon {
+  color: var(--cwp-warning);
+}
+
+.cwp-coupon-card__expiry--expired {
+  color: var(--cwp-danger);
+}
+
+.cwp-coupon-card__votes {
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-2);
+}
+
+/* Action column */
+.cwp-coupon-card__action {
+  padding: var(--cwp-space-5);
+  border-left: 1px solid var(--cwp-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cwp-space-2);
+  align-self: stretch;
+  justify-content: center;
+  min-width: 140px;
+}
+
+/* Coupon code reveal button */
+.cwp-btn-reveal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cwp-space-2);
+  width: 100%;
+  padding: var(--cwp-space-2) var(--cwp-space-4);
+  background: var(--cwp-primary);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--cwp-radius);
+  border: 2px dashed transparent;
+  cursor: pointer;
+  transition: all var(--cwp-transition);
+  text-align: center;
+  letter-spacing: 0.025em;
+}
+
+.cwp-btn-reveal:hover {
+  background: var(--cwp-primary-hover);
+  color: #ffffff;
+}
+
+/* Revealed state — shows actual code */
+.cwp-btn-reveal--revealed {
+  background: var(--cwp-surface);
+  color: var(--cwp-primary);
+  border-color: var(--cwp-primary);
+  font-family: var(--cwp-font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+}
+
+.cwp-btn-reveal--revealed:hover {
+  background: var(--cwp-primary-light);
+  color: var(--cwp-primary);
+}
+
+/* Deal button (no code) */
+.cwp-btn-deal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--cwp-space-2) var(--cwp-space-4);
+  background: var(--cwp-accent);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--cwp-radius);
+  transition: all var(--cwp-transition);
+  text-align: center;
+}
+
+.cwp-btn-deal:hover {
+  background: var(--cwp-accent-hover);
+  color: #ffffff;
+}
+
+.cwp-coupon-card__type {
+  font-size: 0.75rem;
+  color: var(--cwp-text-muted);
+}
+
+
+/* =============================================================================
+   10. BADGES
+   ============================================================================= */
+
+.cwp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: var(--cwp-radius-full);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.cwp-badge--verified {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.cwp-badge--exclusive {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.cwp-badge--new {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.cwp-badge--hot {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.cwp-badge--expired {
+  background: var(--cwp-surface-alt);
+  color: var(--cwp-text-muted);
+}
+
+.cwp-badge--freeshipping {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+
+/* =============================================================================
+   11. CATEGORY GRID
+   ============================================================================= */
+
+.cwp-category-card {
+  background: var(--cwp-surface);
+  border: 1px solid var(--cwp-border);
+  border-radius: var(--cwp-radius-md);
+  padding: var(--cwp-space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-4);
+  text-decoration: none;
+  color: var(--cwp-text);
+  transition: all var(--cwp-transition-md);
+}
+
+.cwp-category-card:hover {
+  border-color: var(--cwp-primary);
+  background: var(--cwp-primary-light);
+  color: var(--cwp-primary);
+  transform: translateX(4px);
+}
+
+.cwp-category-card__icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cwp-surface-alt);
+  border-radius: var(--cwp-radius);
+}
+
+.cwp-category-card__name {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.cwp-category-card__count {
+  font-size: 0.8125rem;
+  color: var(--cwp-text-muted);
+}
+
+.cwp-category-card:hover .cwp-category-card__count {
+  color: var(--cwp-primary);
+}
+
+
+/* =============================================================================
+   12. SEARCH
+   ============================================================================= */
+
+.cwp-search {
+  position: relative;
+  width: 100%;
+}
+
+.cwp-search__input {
+  width: 100%;
+  padding: var(--cwp-space-3) var(--cwp-space-4);
+  padding-left: 40px;
+  background: var(--cwp-surface-alt);
+  border: 1px solid var(--cwp-border);
+  border-radius: var(--cwp-radius-full);
+  font-size: 0.9375rem;
+  color: var(--cwp-text);
+  transition: all var(--cwp-transition);
+  outline: none;
+}
+
+.cwp-search__input::placeholder {
+  color: var(--cwp-text-light);
+}
+
+.cwp-search__input:focus {
+  background: var(--cwp-surface);
+  border-color: var(--cwp-border-focus);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.cwp-search__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cwp-text-muted);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.cwp-search__btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--cwp-space-2) var(--cwp-space-4);
+  background: var(--cwp-primary);
+  color: #ffffff;
+  border-radius: var(--cwp-radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background var(--cwp-transition);
+}
+
+.cwp-search__btn:hover {
+  background: var(--cwp-primary-hover);
+}
+
+/* Hero search — larger */
+.cwp-hero__search .cwp-search__input {
+  padding: var(--cwp-space-4) var(--cwp-space-5);
+  padding-left: 48px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.95);
+  border-color: transparent;
+  border-radius: var(--cwp-radius-full);
+}
+
+.cwp-hero__search .cwp-search__input:focus {
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+
+.cwp-hero__search .cwp-search__icon {
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  color: var(--cwp-text-muted);
+}
+
+.cwp-hero__search .cwp-search__btn {
+  right: 6px;
+  padding: var(--cwp-space-3) var(--cwp-space-5);
+}
+
+
+/* =============================================================================
+   13. SIDEBAR WIDGETS
+   ============================================================================= */
+
+.cwp-widget {
+  background: var(--cwp-surface);
+  border: 1px solid var(--cwp-border);
+  border-radius: var(--cwp-radius-md);
+  overflow: hidden;
+  margin-bottom: var(--cwp-space-5);
+}
+
+.cwp-widget__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: var(--cwp-space-4) var(--cwp-space-5);
+  border-bottom: 1px solid var(--cwp-border);
+  background: var(--cwp-surface-alt);
+}
+
+.cwp-widget__body {
+  padding: var(--cwp-space-4) var(--cwp-space-5);
+}
+
+.cwp-widget-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--cwp-space-2) 0;
+  border-bottom: 1px solid var(--cwp-border);
+  font-size: 0.875rem;
+}
+
+.cwp-widget-list__item:last-child {
+  border-bottom: none;
+}
+
+.cwp-widget-list__item a {
+  color: var(--cwp-text);
+  font-weight: 500;
+}
+
+.cwp-widget-list__item a:hover {
+  color: var(--cwp-primary);
+}
+
+.cwp-widget-list__count {
+  font-size: 0.75rem;
+  color: var(--cwp-text-muted);
+  background: var(--cwp-surface-alt);
+  padding: 2px 8px;
+  border-radius: var(--cwp-radius-full);
+}
+
+/* Ad widget */
+.cwp-widget--ad {
+  border: none;
+  background: transparent;
+}
+
+.cwp-widget--ad .cwp-widget__body {
+  padding: 0;
+  text-align: center;
+}
+
+
+/* =============================================================================
+   14. SINGLE STORE PAGE
+   ============================================================================= */
+
+.cwp-store-header {
+  background: var(--cwp-surface);
+  border: 1px solid var(--cwp-border);
+  border-radius: var(--cwp-radius-md);
+  padding: var(--cwp-space-8);
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-6);
+  margin-bottom: var(--cwp-space-6);
+}
+
+.cwp-store-header__logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  border-radius: var(--cwp-radius-md);
+  flex-shrink: 0;
+  border: 1px solid var(--cwp-border);
+  padding: var(--cwp-space-2);
+}
+
+.cwp-store-header__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cwp-store-header__name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: var(--cwp-space-2);
+}
+
+.cwp-store-header__description {
+  font-size: 0.9375rem;
+  color: var(--cwp-text-muted);
+  margin-bottom: var(--cwp-space-3);
+}
+
+.cwp-store-header__stats {
+  display: flex;
+  gap: var(--cwp-space-6);
+}
+
+.cwp-store-header__stat {
+  font-size: 0.875rem;
+  color: var(--cwp-text-muted);
+}
+
+.cwp-store-header__stat strong {
+  display: block;
+  font-size: 1.125rem;
+  color: var(--cwp-text);
+}
+
+.cwp-store-header__action {
+  flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   15. BUTTONS
+   ============================================================================= */
+
+.cwp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cwp-space-2);
+  padding: var(--cwp-space-3) var(--cwp-space-5);
+  border-radius: var(--cwp-radius);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: all var(--cwp-transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.cwp-btn--primary {
+  background: var(--cwp-primary);
+  color: #ffffff;
+  border-color: var(--cwp-primary);
+}
+
+.cwp-btn--primary:hover {
+  background: var(--cwp-primary-hover);
+  border-color: var(--cwp-primary-hover);
+  color: #ffffff;
+}
+
+.cwp-btn--outline {
+  background: transparent;
+  color: var(--cwp-primary);
+  border-color: var(--cwp-primary);
+}
+
+.cwp-btn--outline:hover {
+  background: var(--cwp-primary);
+  color: #ffffff;
+}
+
+.cwp-btn--ghost {
+  background: transparent;
+  color: var(--cwp-text-muted);
+  border-color: var(--cwp-border);
+}
+
+.cwp-btn--ghost:hover {
+  background: var(--cwp-surface-alt);
+  color: var(--cwp-text);
+}
+
+.cwp-btn--sm {
+  padding: var(--cwp-space-2) var(--cwp-space-3);
+  font-size: 0.8125rem;
+}
+
+.cwp-btn--full {
+  width: 100%;
+}
+
+
+/* =============================================================================
+   16. VOTE BUTTONS
+   ============================================================================= */
+
+.cwp-votes {
+  display: flex;
+  align-items: center;
+  gap: var(--cwp-space-2);
+}
+
+.cwp-vote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--cwp-radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--cwp-border);
+  background: var(--cwp-surface);
+  color: var(--cwp-text-muted);
+  transition: all var(--cwp-transition);
+  cursor: pointer;
+}
+
+.cwp-vote-btn:hover,
+.cwp-vote-btn--active {
+  border-color: var(--cwp-success);
+  color: var(--cwp-success);
+  background: #f0fdf4;
+}
+
+.cwp-vote-btn--down:hover,
+.cwp-vote-btn--down.cwp-vote-btn--active {
+  border-color: var(--cwp-danger);
+  color: var(--cwp-danger);
+  background: #fef2f2;
+}
+
+
+/* =============================================================================
+   17. PAGINATION
+   ============================================================================= */
+
+.cwp-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cwp-space-2);
+  padding-block: var(--cwp-space-8);
+}
+
+.cwp-pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--cwp-radius);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--cwp-text);
+  border: 1px solid var(--cwp-border);
+  background: var(--cwp-surface);
+  transition: all var(--cwp-transition);
+  text-decoration: none;
+}
+
+.cwp-pagination__item:hover {
+  border-color: var(--cwp-primary);
+  color: var(--cwp-primary);
+}
+
+.cwp-pagination__item--active {
+  background: var(--cwp-primary);
+  border-color: var(--cwp-primary);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.cwp-pagination__item--active:hover {
+  color: #ffffff;
+}
+
+.cwp-pagination__dots {
+  color: var(--cwp-text-muted);
+  padding-inline: var(--cwp-space-2);
+}
+
+
+/* =============================================================================
+   18. FOOTER
+   ============================================================================= */
+
+.cwp-footer {
+  background: var(--cwp-text);
+  color: rgba(255,255,255,0.7);
+  margin-top: var(--cwp-space-16);
+}
+
+.cwp-footer__main {
+  padding-block: var(--cwp-space-12);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--cwp-space-8);
+}
+
+.cwp-footer__brand {}
+
+.cwp-footer__logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--cwp-space-3);
+  display: inline-block;
+  text-decoration: none;
+}
+
+.cwp-footer__description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: var(--cwp-space-5);
+  color: rgba(255,255,255,0.6);
+}
+
+.cwp-footer__col-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cwp-space-2);
+}
+
+.cwp-footer__link {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color var(--cwp-transition);
+}
+
+.cwp-footer__link:hover {
+  color: #ffffff;
+}
+
+.cwp-footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-block: var(--cwp-space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cwp-space-4);
+  font-size: 0.875rem;
+}
+
+.cwp-footer__copy {
+  color: rgba(255,255,255,0.5);
+}
+
+.cwp-footer__bottom-links {
+  display: flex;
+  gap: var(--cwp-space-4);
+}
+
+.cwp-footer__bottom-links a {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.875rem;
+}
+
+.cwp-footer__bottom-links a:hover {
+  color: #ffffff;
+}
+
+
+/* =============================================================================
+   19. ADMIN BAR OFFSET
+   ============================================================================= */
+
+.admin-bar .cwp-header {
+  top: 32px;
+}
+
+@media (max-width: 782px) {
+  .admin-bar .cwp-header {
+    top: 46px;
+  }
+}
+
+
+/* =============================================================================
+   20. UTILITIES
+   ============================================================================= */
+
+.cwp-text-muted  { color: var(--cwp-text-muted); }
+.cwp-text-sm     { font-size: 0.875rem; }
+.cwp-text-xs     { font-size: 0.75rem; }
+.cwp-font-mono   { font-family: var(--cwp-font-mono); }
+.cwp-truncate    { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cwp-sr-only     { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.cwp-flex        { display: flex; }
+.cwp-flex-center { display: flex; align-items: center; justify-content: center; }
+.cwp-gap-2       { gap: var(--cwp-space-2); }
+.cwp-gap-3       { gap: var(--cwp-space-3); }
+.cwp-gap-4       { gap: var(--cwp-space-4); }
+.cwp-mt-4        { margin-top: var(--cwp-space-4); }
+.cwp-mt-6        { margin-top: var(--cwp-space-6); }
+.cwp-mt-8        { margin-top: var(--cwp-space-8); }
+.cwp-mb-4        { margin-bottom: var(--cwp-space-4); }
+.cwp-mb-6        { margin-bottom: var(--cwp-space-6); }
+.cwp-hidden      { display: none !important; }
+
+
+/* =============================================================================
+   21. RESPONSIVE
+   ============================================================================= */
+
+/* Tablet — 1024px */
+@media (max-width: 1024px) {
+  .cwp-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cwp-sidebar {
+    position: static;
+  }
+
+  .cwp-footer__main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cwp-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile — 768px */
+@media (max-width: 768px) {
+  :root {
+    --cwp-container: 100%;
+  }
+
+  .cwp-container {
+    padding-inline: var(--cwp-space-4);
+  }
+
+  .cwp-header__search {
+    display: none;
+  }
+
+  .cwp-menu-toggle {
+    display: flex;
+  }
+
+  .cwp-coupon-card {
+    grid-template-columns: 1fr;
+  }
+
+  .cwp-coupon-card__store {
+    display: none;
+  }
+
+  .cwp-coupon-card__action {
+    border-left: none;
+    border-top: 1px solid var(--cwp-border);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--cwp-space-3) var(--cwp-space-4);
+  }
+
+  .cwp-store-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cwp-store-header__stats {
+    justify-content: center;
+  }
+
+  .cwp-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cwp-grid--2 {
+    grid-template-columns: 1fr;
+  }
+
+  .cwp-footer__main {
+    grid-template-columns: 1fr;
+    gap: var(--cwp-space-6);
+  }
+
+  .cwp-footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cwp-hero {
+    padding-block: var(--cwp-space-8);
+  }
+}
+
+/* Small mobile — 480px */
+@media (max-width: 480px) {
+  .cwp-grid--stores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cwp-pagination__item {
+    width: 34px;
+    height: 34px;
+    font-size: 0.875rem;
+  }
+}
