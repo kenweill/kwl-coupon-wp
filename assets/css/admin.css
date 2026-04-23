@@ -1,0 +1,551 @@
+/**
+ * KWL Coupon WP — Admin Styles
+ *
+ * Styles for:
+ * - Theme Settings page
+ * - Meta box fields (slug checker, coupon type toggle)
+ * - Admin list table column widths
+ * - CSV Import page
+ * - Preset selector cards
+ *
+ * @package KWL_Coupon_WP
+ */
+
+
+/* =============================================================================
+   GLOBAL ADMIN OVERRIDES
+   ============================================================================= */
+
+.kwl-meta-table th {
+    width: 200px;
+    vertical-align: top;
+    padding-top: 12px;
+}
+
+.kwl-meta-table td {
+    vertical-align: top;
+}
+
+.kwl-meta-table input[type="text"],
+.kwl-meta-table input[type="url"],
+.kwl-meta-table input[type="date"],
+.kwl-meta-table select,
+.kwl-meta-table textarea {
+    width: 100%;
+    max-width: 600px;
+}
+
+.kwl-meta-table .description {
+    color: #646970;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Monospace coupon code input */
+.kwl-font-mono,
+input.kwl-font-mono {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    letter-spacing: 0.06em;
+    font-size: 1rem !important;
+}
+
+
+/* =============================================================================
+   SLUG CHECKER
+   ============================================================================= */
+
+.kwl-slug-status {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.kwl-slug-ok {
+    color: #00a32a;
+    font-weight: 600;
+}
+
+.kwl-slug-taken {
+    color: #d63638;
+    font-weight: 600;
+}
+
+.kwl-slug-checking {
+    color: #787c82;
+}
+
+.kwl-slug-error {
+    color: #d63638;
+}
+
+.kwl-slug-suggest {
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* =============================================================================
+   COUPON TYPE RADIO TOGGLE
+   ============================================================================= */
+
+.kwl-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f6f7f7;
+    transition: all 0.15s;
+}
+
+.kwl-radio:has(input:checked) {
+    background: #dbeafe;
+    border-color: #2563eb;
+    color: #1d4ed8;
+}
+
+.kwl-radio input {
+    margin: 0;
+}
+
+
+/* =============================================================================
+   SETTINGS PAGE LAYOUT
+   ============================================================================= */
+
+.kwl-settings-wrap h1 {
+    margin-bottom: 16px;
+}
+
+.kwl-settings-layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 24px;
+    margin-top: 20px;
+    align-items: start;
+}
+
+@media (max-width: 960px) {
+    .kwl-settings-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.kwl-settings-main .form-table th {
+    width: 220px;
+}
+
+.kwl-settings-main .form-table td {
+    vertical-align: top;
+}
+
+/* Settings section headers */
+#kwl-coupon-wp-settings h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #787c82;
+    background: #f6f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin: 24px 0 0;
+}
+
+
+/* =============================================================================
+   INFO BOXES (Settings sidebar)
+   ============================================================================= */
+
+.kwl-info-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.kwl-info-box h3 {
+    margin: 0 0 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #787c82;
+    font-weight: 700;
+}
+
+.kwl-info-box ul {
+    margin: 0;
+    padding: 0 0 0 16px;
+}
+
+.kwl-info-box ul li {
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.kwl-info-box p {
+    font-size: 13px;
+    margin: 0 0 8px;
+    color: #3c434a;
+}
+
+.kwl-info-box p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =============================================================================
+   PRESET SELECTOR CARDS
+   ============================================================================= */
+
+.kwl-preset-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.kwl-preset-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    text-align: center;
+    min-width: 120px;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+    user-select: none;
+}
+
+.kwl-preset-card:hover {
+    border-color: #2563eb;
+}
+
+.kwl-preset-card--active {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.kwl-preset-swatches {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.kwl-preset-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.1);
+    display: inline-block;
+}
+
+.kwl-preset-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1e1e1e;
+}
+
+.kwl-preset-active-badge {
+    font-size: 11px;
+    color: #2563eb;
+    margin-top: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+
+/* =============================================================================
+   CSV IMPORT PAGE
+   ============================================================================= */
+
+.kwl-import-wrap {
+    max-width: 860px;
+}
+
+.kwl-import-wrap h1 {
+    margin-bottom: 8px;
+}
+
+.kwl-import-description {
+    color: #646970;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.kwl-import-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.kwl-import-card h2 {
+    font-size: 15px;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Import type radios */
+.kwl-import-type-options {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.kwl-import-type-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    background: #f6f7f7;
+    transition: all 0.15s;
+}
+
+.kwl-import-type-option:has(input:checked) {
+    background: #eff6ff;
+    border-color: #2563eb;
+    color: #1d4ed8;
+}
+
+.kwl-import-type-option input {
+    margin: 0;
+}
+
+/* File upload zone */
+.kwl-file-drop-zone {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 16px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+}
+
+.kwl-file-drop-zone:hover,
+.kwl-file-drop-zone.kwl-drag-over {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.kwl-file-drop-zone__icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.kwl-file-drop-zone__text {
+    font-size: 14px;
+    color: #646970;
+    margin-bottom: 8px;
+}
+
+.kwl-file-drop-zone__file-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2563eb;
+    margin-top: 8px;
+}
+
+#kwl-csv-file {
+    display: none;
+}
+
+/* Progress bar */
+#kwl-import-progress {
+    display: none;
+    margin: 16px 0;
+}
+
+.kwl-progress-track {
+    background: #f0f0f1;
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.kwl-progress-bar {
+    background: #2563eb;
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.kwl-progress-text {
+    font-size: 12px;
+    color: #646970;
+}
+
+/* Import log */
+#kwl-import-log {
+    background: #1e1e1e;
+    color: #ccc;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    max-height: 240px;
+    overflow-y: auto;
+    margin-top: 16px;
+    display: none;
+}
+
+#kwl-import-log.kwl-log-active {
+    display: block;
+}
+
+.kwl-log-ok {
+    color: #4ade80;
+}
+
+.kwl-log-skip {
+    color: #fbbf24;
+}
+
+.kwl-log-error {
+    color: #f87171;
+}
+
+/* CSV template download links */
+.kwl-csv-templates {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+}
+
+.kwl-csv-templates p {
+    font-size: 13px;
+    color: #646970;
+    margin-bottom: 8px;
+}
+
+.kwl-csv-templates .button {
+    margin-right: 8px;
+}
+
+
+/* =============================================================================
+   ADMIN LIST TABLE — COLUMN STYLES
+   ============================================================================= */
+
+/* Store list */
+#kwl_store-posts .column-kwl_logo    { width: 56px; }
+#kwl_store-posts .column-kwl_slug    { width: 140px; }
+#kwl_store-posts .column-kwl_coupons { width: 80px; text-align: center; }
+#kwl_store-posts .column-kwl_network { width: 90px; }
+#kwl_store-posts .column-kwl_featured{ width: 70px; text-align: center; }
+#kwl_store-posts .column-kwl_clicks  { width: 70px; text-align: right; }
+
+/* Coupon list */
+#kwl_coupon-posts .column-kwl_type    { width: 44px; text-align: center; }
+#kwl_coupon-posts .column-kwl_store   { width: 140px; }
+#kwl_coupon-posts .column-kwl_code    { width: 130px; }
+#kwl_coupon-posts .column-kwl_discount{ width: 100px; }
+#kwl_coupon-posts .column-kwl_expiry  { width: 110px; }
+#kwl_coupon-posts .column-kwl_status  { width: 130px; }
+#kwl_coupon-posts .column-kwl_clicks  { width: 70px; text-align: right; }
+
+/* Zebra striping for better readability */
+#kwl_coupon-posts .wp-list-table tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+
+/* =============================================================================
+   ADMIN NOTICES (permalink warning, etc.)
+   ============================================================================= */
+
+.notice.kwl-notice {
+    border-left-color: #2563eb;
+}
+
+.notice.kwl-notice strong {
+    color: #2563eb;
+}
+
+
+/* =============================================================================
+   METABOX STATS BOX
+   ============================================================================= */
+
+#kwl_coupon_stats .inside {
+    padding: 8px 12px;
+}
+
+#kwl_coupon_stats ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#kwl_coupon_stats ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+#kwl_coupon_stats ul li:last-child {
+    border-bottom: none;
+}
+
+#kwl_coupon_stats strong {
+    color: #1e1e1e;
+}
+
+.kwl-reset-stats {
+    margin-top: 10px;
+    color: #d63638 !important;
+    border-color: #d63638 !important;
+}
+
+.kwl-reset-stats:hover {
+    background: #d63638 !important;
+    color: #fff !important;
+}
+
+
+/* =============================================================================
+   RESPONSIVE ADMIN
+   ============================================================================= */
+
+@media screen and (max-width: 782px) {
+
+    .kwl-settings-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .kwl-preset-grid {
+        gap: 8px;
+    }
+
+    .kwl-preset-card {
+        min-width: 100px;
+        padding: 10px 8px;
+    }
+
+    .kwl-import-type-options {
+        flex-direction: column;
+    }
+
+}
