@@ -1,0 +1,8 @@
+{
+    "name": "Dark",
+    "description": "Dark background with vibrant green accent. Great for tech and SaaS coupon sites.",
+    "version": "1.0.0",
+    "author": "Ken Weill",
+    "author_uri": "https://github.com/kenweill",
+    "colors": ["#22c55e", "#f97316", "#0f172a", "#f8fafc"]
+}

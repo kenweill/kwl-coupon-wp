@@ -1,0 +1,8 @@
+{
+    "name": "Warm",
+    "description": "Cream background with warm orange accents. Perfect for lifestyle, food, and fashion niches.",
+    "version": "1.0.0",
+    "author": "Ken Weill",
+    "author_uri": "https://github.com/kenweill",
+    "colors": ["#ea580c", "#f59e0b", "#faf7f4", "#1c1917"]
+}

@@ -1,0 +1,25 @@
+/*
+ * Warm Preset for KWL Coupon WP
+ * Author: Ken Weill
+ * License: GPL v2
+ */
+
+:root {
+  --cwp-primary:        #ea580c;
+  --cwp-primary-hover:  #c2410c;
+  --cwp-primary-light:  #fff7ed;
+  --cwp-accent:         #f59e0b;
+  --cwp-accent-hover:   #d97706;
+  --cwp-bg:             #faf7f4;
+  --cwp-surface:        #ffffff;
+  --cwp-surface-alt:    #f5f0eb;
+  --cwp-surface-hover:  #f5f0eb;
+  --cwp-border:         #e7e0d8;
+  --cwp-text:           #1c1917;
+  --cwp-text-muted:     #78716c;
+  --cwp-radius:         10px;
+}
+
+.cwp-nav {
+  background: #ea580c;
+}

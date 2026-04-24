@@ -1,0 +1,8 @@
+{
+    "name": "Clean",
+    "description": "The default preset. White background, blue primary, professional and neutral.",
+    "version": "1.0.0",
+    "author": "Ken Weill",
+    "author_uri": "https://github.com/kenweill",
+    "colors": ["#2563eb", "#f59e0b", "#f8fafc", "#0f172a"]
+}

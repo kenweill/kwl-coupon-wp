@@ -1448,3 +1448,1866 @@ code {
     font-size: 0.875rem;
   }
 }
+/* =============================================================================
+   APPEND TO style.css
+   Single Coupon Page, 404 Page, Subcat Chips, and remaining components.
+   Add this block at the end of the existing style.css file.
+   ============================================================================= */
+
+
+/* =============================================================================
+   SINGLE COUPON PAGE — .cwp-coupon-single
+   ============================================================================= */
+
+.cwp-coupon-single {
+    background: var(--cwp-surface);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius-md);
+    padding: var(--cwp-space-8);
+    margin-bottom: var(--cwp-space-6);
+}
+
+.cwp-coupon-single--expired {
+    opacity: 0.75;
+}
+
+/* Store row inside coupon hero */
+.cwp-coupon-single__store {
+    display: flex;
+    align-items: center;
+    gap: var(--cwp-space-3);
+    margin-bottom: var(--cwp-space-5);
+    padding-bottom: var(--cwp-space-5);
+    border-bottom: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-single__store-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: var(--cwp-radius);
+    border: 1px solid var(--cwp-border);
+    padding: var(--cwp-space-1);
+    flex-shrink: 0;
+}
+
+.cwp-coupon-single__store-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cwp-coupon-single__store-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cwp-text);
+    text-decoration: none;
+}
+
+.cwp-coupon-single__store-name:hover {
+    color: var(--cwp-primary);
+}
+
+.cwp-coupon-single__store-label {
+    font-size: 0.8125rem;
+    color: var(--cwp-text-muted);
+}
+
+/* Badges row */
+.cwp-coupon-single__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-2);
+    margin-bottom: var(--cwp-space-4);
+}
+
+/* Discount label — large on single page */
+.cwp-coupon-single__discount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--cwp-primary);
+    line-height: 1.1;
+    margin-bottom: var(--cwp-space-2);
+    letter-spacing: -0.025em;
+}
+
+/* Coupon title H1 */
+.cwp-coupon-single__title {
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 700;
+    color: var(--cwp-text);
+    margin-bottom: var(--cwp-space-3);
+    line-height: 1.3;
+}
+
+/* Short description / excerpt */
+.cwp-coupon-single__description {
+    font-size: 1rem;
+    color: var(--cwp-text-muted);
+    margin-bottom: var(--cwp-space-6);
+    line-height: 1.6;
+}
+
+
+/* =============================================================================
+   REVEAL SECTION
+   ============================================================================= */
+
+.cwp-coupon-single__reveal {
+    margin-bottom: var(--cwp-space-6);
+}
+
+/* Blurred code preview */
+.cwp-code-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--cwp-space-3);
+}
+
+.cwp-code-preview__blur {
+    font-family: var(--cwp-font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--cwp-primary);
+    filter: blur(6px);
+    user-select: none;
+    padding: var(--cwp-space-3) var(--cwp-space-6);
+    background: var(--cwp-primary-light);
+    border-radius: var(--cwp-radius);
+    border: 2px dashed var(--cwp-primary);
+}
+
+/* Large reveal button (single coupon page) */
+.cwp-btn-reveal--large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-2);
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+    padding: var(--cwp-space-4) var(--cwp-space-8);
+    background: var(--cwp-primary);
+    color: #ffffff;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    border-radius: var(--cwp-radius);
+    border: none;
+    cursor: pointer;
+    transition: all var(--cwp-transition-md);
+    letter-spacing: 0.015em;
+}
+
+.cwp-btn-reveal--large:hover {
+    background: var(--cwp-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--cwp-shadow-md);
+}
+
+/* Code box — shown after reveal */
+.cwp-code-revealed {
+    text-align: center;
+}
+
+.cwp-code-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 2px solid var(--cwp-primary);
+    border-radius: var(--cwp-radius);
+    overflow: hidden;
+    margin-inline: auto;
+    margin-bottom: var(--cwp-space-3);
+}
+
+.cwp-code-box__code {
+    font-family: var(--cwp-font-mono);
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--cwp-primary);
+    padding: var(--cwp-space-3) var(--cwp-space-6);
+    background: var(--cwp-primary-light);
+    user-select: all;
+    min-width: 180px;
+    text-align: center;
+}
+
+.cwp-code-box__copy {
+    display: flex;
+    align-items: center;
+    gap: var(--cwp-space-2);
+    padding: var(--cwp-space-3) var(--cwp-space-4);
+    background: var(--cwp-primary);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background var(--cwp-transition);
+    white-space: nowrap;
+}
+
+.cwp-code-box__copy:hover {
+    background: var(--cwp-primary-hover);
+}
+
+.cwp-code-revealed__hint {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    margin-top: var(--cwp-space-2);
+}
+
+.cwp-code-revealed__hint a {
+    color: var(--cwp-primary);
+    font-weight: 600;
+}
+
+/* Deal button — large (single coupon page) */
+.cwp-btn-deal--large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-2);
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+    padding: var(--cwp-space-4) var(--cwp-space-8);
+    background: var(--cwp-accent);
+    color: #ffffff;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    border-radius: var(--cwp-radius);
+    text-decoration: none;
+    transition: all var(--cwp-transition-md);
+    letter-spacing: 0.015em;
+}
+
+.cwp-btn-deal--large:hover {
+    background: var(--cwp-accent-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: var(--cwp-shadow-md);
+}
+
+/* Expired state */
+.cwp-coupon-single__expired {
+    text-align: center;
+    padding: var(--cwp-space-6);
+    background: var(--cwp-surface-alt);
+    border-radius: var(--cwp-radius);
+    margin-bottom: var(--cwp-space-6);
+}
+
+.cwp-coupon-single__expired p {
+    color: var(--cwp-danger);
+    font-weight: 600;
+    margin-bottom: var(--cwp-space-4);
+}
+
+
+/* =============================================================================
+   COUPON META GRID
+   ============================================================================= */
+
+.cwp-coupon-single__meta {
+    border-top: 1px solid var(--cwp-border);
+    padding-top: var(--cwp-space-5);
+    margin-top: var(--cwp-space-5);
+}
+
+.cwp-coupon-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--cwp-space-4);
+    margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-coupon-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cwp-coupon-meta-item__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-coupon-meta-item__value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--cwp-text);
+}
+
+.cwp-coupon-meta-item__value a {
+    color: var(--cwp-primary);
+}
+
+/* Categories and tags on single coupon */
+.cwp-coupon-single__cats,
+.cwp-coupon-single__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--cwp-space-2);
+}
+
+.cwp-coupon-single__cats .cwp-coupon-meta-item__label,
+.cwp-coupon-single__tags .cwp-coupon-meta-item__label {
+    margin-right: var(--cwp-space-1);
+}
+
+
+/* =============================================================================
+   VOTING — SINGLE COUPON PAGE
+   ============================================================================= */
+
+.cwp-coupon-single__votes {
+    border-top: 1px solid var(--cwp-border);
+    padding-top: var(--cwp-space-5);
+    margin-top: var(--cwp-space-5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--cwp-space-3);
+    text-align: center;
+}
+
+.cwp-coupon-single__votes-label {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    font-weight: 500;
+}
+
+.cwp-coupon-single__votes .cwp-votes {
+    gap: var(--cwp-space-3);
+}
+
+.cwp-coupon-single__votes .cwp-vote-btn {
+    padding: var(--cwp-space-2) var(--cwp-space-5);
+    font-size: 0.9375rem;
+}
+
+.cwp-vote-count {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.cwp-vote-feedback {
+    font-size: 0.875rem;
+    color: var(--cwp-success);
+    font-weight: 600;
+    padding: var(--cwp-space-2) var(--cwp-space-4);
+    background: #dcfce7;
+    border-radius: var(--cwp-radius-full);
+}
+
+
+/* =============================================================================
+   RELATED COUPONS + COUPON CONTENT (SINGLE PAGE)
+   ============================================================================= */
+
+.cwp-related-coupons {
+    margin-top: var(--cwp-space-8);
+    padding-top: var(--cwp-space-8);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-content {
+    margin-top: var(--cwp-space-8);
+    padding-top: var(--cwp-space-8);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--cwp-space-4);
+}
+
+
+/* =============================================================================
+   SUBCATEGORY CHIPS (Category archive)
+   ============================================================================= */
+
+.cwp-subcat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-2);
+    margin-bottom: var(--cwp-space-6);
+}
+
+.cwp-subcat-chips .cwp-badge {
+    font-size: 0.875rem;
+    padding: var(--cwp-space-2) var(--cwp-space-4);
+    border-radius: var(--cwp-radius-full);
+    text-decoration: none;
+    transition: all var(--cwp-transition);
+}
+
+.cwp-subcat-chips .cwp-badge:hover {
+    background: var(--cwp-primary);
+    color: #ffffff;
+}
+
+
+/* =============================================================================
+   404 PAGE
+   ============================================================================= */
+
+.cwp-404 {
+    padding: var(--cwp-space-12) 0;
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+.cwp-404__content {
+    text-align: center;
+    margin-bottom: var(--cwp-space-10);
+}
+
+.cwp-404__emoji {
+    font-size: 4rem;
+    margin-bottom: var(--cwp-space-5);
+    display: block;
+    line-height: 1;
+}
+
+.cwp-404__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--cwp-text);
+    margin-bottom: var(--cwp-space-4);
+    letter-spacing: -0.025em;
+}
+
+.cwp-404__message {
+    font-size: 1.0625rem;
+    color: var(--cwp-text-muted);
+    margin-bottom: var(--cwp-space-6);
+    line-height: 1.6;
+}
+
+.cwp-404__search {
+    max-width: 480px;
+    margin-inline: auto;
+    margin-bottom: var(--cwp-space-6);
+}
+
+.cwp-404__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-3);
+}
+
+.cwp-404__recent {
+    border-top: 1px solid var(--cwp-border);
+    padding-top: var(--cwp-space-8);
+}
+
+.cwp-404__recent h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--cwp-space-5);
+    text-align: center;
+}
+
+
+/* =============================================================================
+   POST CARDS (index.php blog fallback)
+   ============================================================================= */
+
+.cwp-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-6);
+}
+
+.cwp-post-card {
+    background: var(--cwp-surface);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius-md);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: start;
+}
+
+.cwp-post-card__thumb {
+    display: block;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+}
+
+.cwp-post-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--cwp-transition-md);
+}
+
+.cwp-post-card:hover .cwp-post-card__thumb img {
+    transform: scale(1.03);
+}
+
+.cwp-post-card__body {
+    padding: var(--cwp-space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-3);
+}
+
+.cwp-post-card__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.cwp-post-card__title a {
+    color: var(--cwp-text);
+    text-decoration: none;
+}
+
+.cwp-post-card__title a:hover {
+    color: var(--cwp-primary);
+}
+
+.cwp-post-card__meta {
+    font-size: 0.8125rem;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-post-card__excerpt {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    line-height: 1.6;
+}
+
+.cwp-post-card__excerpt p {
+    margin: 0;
+}
+
+
+/* =============================================================================
+   HEADER SCROLLED STATE
+   ============================================================================= */
+
+.cwp-header--scrolled {
+    box-shadow: var(--cwp-shadow-md);
+}
+
+
+/* =============================================================================
+   AD SLOTS
+   ============================================================================= */
+
+.cwp-ad-banner {
+    background: var(--cwp-surface-alt);
+    border-bottom: 1px solid var(--cwp-border);
+    padding-block: var(--cwp-space-3);
+    text-align: center;
+}
+
+.cwp-ad-slot {
+    text-align: center;
+}
+
+.cwp-ad-slot--header {
+    margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-ad-slot--sidebar {
+    margin-bottom: var(--cwp-space-5);
+}
+
+.cwp-ad-slot--infeed {
+    padding: var(--cwp-space-4);
+    background: var(--cwp-surface-alt);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius);
+}
+
+
+/* =============================================================================
+   RESPONSIVE ADDITIONS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    /* Single coupon */
+    .cwp-coupon-single {
+        padding: var(--cwp-space-5);
+    }
+
+    .cwp-coupon-single__discount {
+        font-size: 1.5rem;
+    }
+
+    .cwp-code-box {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .cwp-code-box__code {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .cwp-code-box__copy {
+        width: 100%;
+        justify-content: center;
+        border-radius: 0;
+    }
+
+    .cwp-btn-reveal--large,
+    .cwp-btn-deal--large {
+        max-width: 100%;
+    }
+
+    .cwp-coupon-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cwp-404__links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cwp-404__links .cwp-btn {
+        text-align: center;
+    }
+
+    /* Post cards */
+    .cwp-post-card {
+        grid-template-columns: 1fr;
+    }
+
+    .cwp-post-card__thumb {
+        aspect-ratio: 16/9;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .cwp-coupon-meta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cwp-coupon-single__store {
+        flex-wrap: wrap;
+    }
+
+}
+/* =============================================================================
+   KWL COUPON WP — SINGLE COUPON PAGE + 404 + MISC CSS PATCH
+   Append this block to the end of style.css
+   ============================================================================= */
+
+
+/* =============================================================================
+   SINGLE COUPON PAGE — .cwp-coupon-single
+   ============================================================================= */
+
+.cwp-coupon-single {
+    background: var(--cwp-surface);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius-lg);
+    padding: var(--cwp-space-8);
+    margin-bottom: var(--cwp-space-8);
+    box-shadow: var(--cwp-shadow);
+}
+
+.cwp-coupon-single--expired {
+    opacity: .75;
+}
+
+/* Store header row */
+.cwp-coupon-single__store {
+    display: flex;
+    align-items: center;
+    gap: var(--cwp-space-4);
+    margin-bottom: var(--cwp-space-5);
+    padding-bottom: var(--cwp-space-5);
+    border-bottom: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-single__store-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: var(--cwp-radius);
+    border: 1px solid var(--cwp-border);
+    padding: var(--cwp-space-1);
+    flex-shrink: 0;
+}
+
+.cwp-coupon-single__store-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cwp-coupon-single__store-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--cwp-text);
+    text-decoration: none;
+}
+
+.cwp-coupon-single__store-name:hover {
+    color: var(--cwp-primary);
+}
+
+.cwp-coupon-single__store-label {
+    font-size: 0.8125rem;
+    color: var(--cwp-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+}
+
+/* Badges */
+.cwp-coupon-single__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-2);
+    margin-bottom: var(--cwp-space-4);
+}
+
+/* Discount label */
+.cwp-coupon-single__discount {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--cwp-primary);
+    line-height: 1.1;
+    margin-bottom: var(--cwp-space-2);
+    letter-spacing: -0.02em;
+}
+
+/* Title */
+.cwp-coupon-single__title {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--cwp-text);
+    margin-bottom: var(--cwp-space-3);
+    line-height: 1.3;
+}
+
+/* Description */
+.cwp-coupon-single__description {
+    font-size: 1rem;
+    color: var(--cwp-text-muted);
+    margin-bottom: var(--cwp-space-6);
+    line-height: 1.6;
+}
+
+
+/* =============================================================================
+   CODE REVEAL SECTION
+   ============================================================================= */
+
+.cwp-coupon-single__reveal {
+    margin-block: var(--cwp-space-6);
+}
+
+/* Blurred placeholder */
+.cwp-code-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-code-preview__blur {
+    font-family: var(--cwp-font-mono);
+    font-size: 1.5rem;
+    letter-spacing: .25em;
+    color: transparent;
+    text-shadow: 0 0 10px var(--cwp-text-muted);
+    user-select: none;
+    filter: blur(6px);
+    background: var(--cwp-surface-alt);
+    padding: var(--cwp-space-3) var(--cwp-space-8);
+    border-radius: var(--cwp-radius);
+    border: 2px dashed var(--cwp-border);
+}
+
+/* Large reveal button */
+.cwp-btn-reveal--large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-3);
+    width: 100%;
+    padding: var(--cwp-space-4) var(--cwp-space-6);
+    background: var(--cwp-primary);
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: var(--cwp-radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--cwp-transition-md);
+    letter-spacing: .01em;
+}
+
+.cwp-btn-reveal--large:hover {
+    background: var(--cwp-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--cwp-shadow-md);
+}
+
+.cwp-btn-reveal--large:active {
+    transform: translateY(0);
+}
+
+/* Revealed code box */
+.cwp-code-revealed {
+    text-align: center;
+}
+
+.cwp-code-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 2px dashed var(--cwp-primary);
+    border-radius: var(--cwp-radius-md);
+    overflow: hidden;
+    margin-bottom: var(--cwp-space-3);
+    background: var(--cwp-primary-light);
+}
+
+.cwp-code-box__code {
+    font-family: var(--cwp-font-mono);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: var(--cwp-primary);
+    padding: var(--cwp-space-4) var(--cwp-space-6);
+    min-width: 180px;
+    text-align: center;
+    user-select: all;
+}
+
+.cwp-code-box__copy {
+    display: flex;
+    align-items: center;
+    gap: var(--cwp-space-2);
+    padding: var(--cwp-space-4) var(--cwp-space-5);
+    background: var(--cwp-primary);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background var(--cwp-transition);
+    white-space: nowrap;
+}
+
+.cwp-code-box__copy:hover {
+    background: var(--cwp-primary-hover);
+}
+
+.cwp-code-revealed__hint {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    margin-top: var(--cwp-space-2);
+}
+
+.cwp-code-revealed__hint a {
+    font-weight: 600;
+}
+
+/* Large deal button */
+.cwp-btn-deal--large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-3);
+    padding: var(--cwp-space-4) var(--cwp-space-6);
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: var(--cwp-radius-md);
+    transition: all var(--cwp-transition-md);
+}
+
+.cwp-btn-deal--large:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--cwp-shadow-md);
+}
+
+/* Expired state */
+.cwp-coupon-single__expired {
+    text-align: center;
+    padding: var(--cwp-space-8);
+    background: var(--cwp-surface-alt);
+    border-radius: var(--cwp-radius-md);
+    border: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-single__expired p {
+    color: var(--cwp-danger);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    margin-bottom: var(--cwp-space-4);
+}
+
+
+/* =============================================================================
+   COUPON META GRID
+   ============================================================================= */
+
+.cwp-coupon-single__meta {
+    margin-top: var(--cwp-space-6);
+    padding-top: var(--cwp-space-6);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--cwp-space-4);
+    margin-bottom: var(--cwp-space-5);
+}
+
+.cwp-coupon-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-1);
+}
+
+.cwp-coupon-meta-item__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-coupon-meta-item__value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--cwp-text);
+}
+
+.cwp-coupon-meta-item__value a {
+    color: var(--cwp-primary);
+    font-weight: 600;
+}
+
+/* Categories and tags row */
+.cwp-coupon-single__cats,
+.cwp-coupon-single__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--cwp-space-2);
+    font-size: 0.875rem;
+}
+
+
+/* =============================================================================
+   VOTE SECTION
+   ============================================================================= */
+
+.cwp-coupon-single__votes {
+    margin-top: var(--cwp-space-6);
+    padding-top: var(--cwp-space-6);
+    border-top: 1px solid var(--cwp-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--cwp-space-4);
+    text-align: center;
+}
+
+.cwp-coupon-single__votes-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-vote-feedback {
+    font-size: 0.875rem;
+    color: var(--cwp-success);
+    font-weight: 600;
+    padding: var(--cwp-space-2) var(--cwp-space-4);
+    background: #dcfce7;
+    border-radius: var(--cwp-radius-full);
+}
+
+
+/* =============================================================================
+   RELATED COUPONS + FULL CONTENT
+   ============================================================================= */
+
+.cwp-related-coupons {
+    margin-top: var(--cwp-space-10);
+    padding-top: var(--cwp-space-8);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-content {
+    margin-top: var(--cwp-space-8);
+    padding-top: var(--cwp-space-8);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--cwp-space-5);
+}
+
+
+/* =============================================================================
+   404 PAGE
+   ============================================================================= */
+
+.cwp-404 {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-block: var(--cwp-space-16);
+}
+
+.cwp-404__content {
+    text-align: center;
+    margin-bottom: var(--cwp-space-12);
+}
+
+.cwp-404__emoji {
+    font-size: 4rem;
+    margin-bottom: var(--cwp-space-5);
+    line-height: 1;
+}
+
+.cwp-404__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--cwp-text);
+    margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-404__message {
+    font-size: 1.0625rem;
+    color: var(--cwp-text-muted);
+    margin-bottom: var(--cwp-space-8);
+    line-height: 1.6;
+}
+
+.cwp-404__search {
+    max-width: 440px;
+    margin: 0 auto var(--cwp-space-6);
+}
+
+.cwp-404__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-3);
+    flex-wrap: wrap;
+}
+
+.cwp-404__recent {
+    border-top: 1px solid var(--cwp-border);
+    padding-top: var(--cwp-space-8);
+}
+
+.cwp-404__recent h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--cwp-space-5);
+    text-align: center;
+}
+
+
+/* =============================================================================
+   SUBCATEGORY CHIPS (taxonomy-kwl_coupon_cat.php)
+   ============================================================================= */
+
+.cwp-subcat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-2);
+    margin-bottom: var(--cwp-space-6);
+}
+
+
+/* =============================================================================
+   POST CARD (index.php blog fallback)
+   ============================================================================= */
+
+.cwp-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-6);
+}
+
+.cwp-post-card {
+    background: var(--cwp-surface);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius-md);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+}
+
+.cwp-post-card__thumb {
+    display: block;
+    overflow: hidden;
+}
+
+.cwp-post-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--cwp-transition-md);
+}
+
+.cwp-post-card:hover .cwp-post-card__thumb img {
+    transform: scale(1.03);
+}
+
+.cwp-post-card__body {
+    padding: var(--cwp-space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-3);
+}
+
+.cwp-post-card__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.cwp-post-card__title a {
+    color: var(--cwp-text);
+    text-decoration: none;
+}
+
+.cwp-post-card__title a:hover {
+    color: var(--cwp-primary);
+}
+
+.cwp-post-card__meta {
+    font-size: 0.8125rem;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-post-card__excerpt {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* Post card without thumbnail */
+.cwp-post-card:not(:has(.cwp-post-card__thumb)) {
+    grid-template-columns: 1fr;
+}
+
+
+/* =============================================================================
+   HEADER SCROLLED STATE
+   ============================================================================= */
+
+.cwp-header--scrolled {
+    box-shadow: var(--cwp-shadow-md);
+}
+
+
+/* =============================================================================
+   AD SLOTS
+   ============================================================================= */
+
+.cwp-ad-banner {
+    background: var(--cwp-surface-alt);
+    border-bottom: 1px solid var(--cwp-border);
+    padding-block: var(--cwp-space-3);
+}
+
+.cwp-ad-slot--header,
+.cwp-ad-slot--infeed {
+    text-align: center;
+    padding-block: var(--cwp-space-3);
+}
+
+.cwp-ad-slot--sidebar {
+    text-align: center;
+    margin-bottom: var(--cwp-space-5);
+}
+
+
+/* =============================================================================
+   SEARCH GROUP (search.php)
+   ============================================================================= */
+
+.cwp-search-group + .cwp-search-group {
+    border-top: 1px solid var(--cwp-border);
+}
+
+
+/* =============================================================================
+   RESPONSIVE — SINGLE COUPON
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .cwp-coupon-single {
+        padding: var(--cwp-space-5);
+    }
+
+    .cwp-coupon-single__discount {
+        font-size: 2rem;
+    }
+
+    .cwp-code-box {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cwp-code-box__code {
+        width: 100%;
+        font-size: 1.25rem;
+    }
+
+    .cwp-code-box__copy {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cwp-coupon-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cwp-post-card {
+        grid-template-columns: 1fr;
+    }
+
+    .cwp-post-card__thumb {
+        height: 200px;
+    }
+
+    .cwp-404__links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cwp-404__links .cwp-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
+/* =============================================================================
+   KWL COUPON WP — SINGLE COUPON PAGE + 404 + MISC CSS PATCH
+   Append this block to the end of style.css
+   ============================================================================= */
+
+
+/* =============================================================================
+   SINGLE COUPON PAGE — .cwp-coupon-single
+   ============================================================================= */
+
+.cwp-coupon-single {
+    background: var(--cwp-surface);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius-lg);
+    padding: var(--cwp-space-8);
+    margin-bottom: var(--cwp-space-8);
+    box-shadow: var(--cwp-shadow);
+}
+
+.cwp-coupon-single--expired {
+    opacity: .75;
+}
+
+/* Store header row */
+.cwp-coupon-single__store {
+    display: flex;
+    align-items: center;
+    gap: var(--cwp-space-4);
+    margin-bottom: var(--cwp-space-5);
+    padding-bottom: var(--cwp-space-5);
+    border-bottom: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-single__store-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: var(--cwp-radius);
+    border: 1px solid var(--cwp-border);
+    padding: var(--cwp-space-1);
+    flex-shrink: 0;
+}
+
+.cwp-coupon-single__store-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cwp-coupon-single__store-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--cwp-text);
+    text-decoration: none;
+}
+
+.cwp-coupon-single__store-name:hover {
+    color: var(--cwp-primary);
+}
+
+.cwp-coupon-single__store-label {
+    font-size: 0.8125rem;
+    color: var(--cwp-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+}
+
+/* Badges */
+.cwp-coupon-single__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-2);
+    margin-bottom: var(--cwp-space-4);
+}
+
+/* Discount label */
+.cwp-coupon-single__discount {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--cwp-primary);
+    line-height: 1.1;
+    margin-bottom: var(--cwp-space-2);
+    letter-spacing: -0.02em;
+}
+
+/* Title */
+.cwp-coupon-single__title {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--cwp-text);
+    margin-bottom: var(--cwp-space-3);
+    line-height: 1.3;
+}
+
+/* Description */
+.cwp-coupon-single__description {
+    font-size: 1rem;
+    color: var(--cwp-text-muted);
+    margin-bottom: var(--cwp-space-6);
+    line-height: 1.6;
+}
+
+
+/* =============================================================================
+   CODE REVEAL SECTION
+   ============================================================================= */
+
+.cwp-coupon-single__reveal {
+    margin-block: var(--cwp-space-6);
+}
+
+/* Blurred placeholder */
+.cwp-code-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-code-preview__blur {
+    font-family: var(--cwp-font-mono);
+    font-size: 1.5rem;
+    letter-spacing: .25em;
+    color: transparent;
+    text-shadow: 0 0 10px var(--cwp-text-muted);
+    user-select: none;
+    filter: blur(6px);
+    background: var(--cwp-surface-alt);
+    padding: var(--cwp-space-3) var(--cwp-space-8);
+    border-radius: var(--cwp-radius);
+    border: 2px dashed var(--cwp-border);
+}
+
+/* Large reveal button */
+.cwp-btn-reveal--large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-3);
+    width: 100%;
+    padding: var(--cwp-space-4) var(--cwp-space-6);
+    background: var(--cwp-primary);
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: var(--cwp-radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--cwp-transition-md);
+    letter-spacing: .01em;
+}
+
+.cwp-btn-reveal--large:hover {
+    background: var(--cwp-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--cwp-shadow-md);
+}
+
+.cwp-btn-reveal--large:active {
+    transform: translateY(0);
+}
+
+/* Revealed code box */
+.cwp-code-revealed {
+    text-align: center;
+}
+
+.cwp-code-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 2px dashed var(--cwp-primary);
+    border-radius: var(--cwp-radius-md);
+    overflow: hidden;
+    margin-bottom: var(--cwp-space-3);
+    background: var(--cwp-primary-light);
+}
+
+.cwp-code-box__code {
+    font-family: var(--cwp-font-mono);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: var(--cwp-primary);
+    padding: var(--cwp-space-4) var(--cwp-space-6);
+    min-width: 180px;
+    text-align: center;
+    user-select: all;
+}
+
+.cwp-code-box__copy {
+    display: flex;
+    align-items: center;
+    gap: var(--cwp-space-2);
+    padding: var(--cwp-space-4) var(--cwp-space-5);
+    background: var(--cwp-primary);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background var(--cwp-transition);
+    white-space: nowrap;
+}
+
+.cwp-code-box__copy:hover {
+    background: var(--cwp-primary-hover);
+}
+
+.cwp-code-revealed__hint {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    margin-top: var(--cwp-space-2);
+}
+
+.cwp-code-revealed__hint a {
+    font-weight: 600;
+}
+
+/* Large deal button */
+.cwp-btn-deal--large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-3);
+    padding: var(--cwp-space-4) var(--cwp-space-6);
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: var(--cwp-radius-md);
+    transition: all var(--cwp-transition-md);
+}
+
+.cwp-btn-deal--large:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--cwp-shadow-md);
+}
+
+/* Expired state */
+.cwp-coupon-single__expired {
+    text-align: center;
+    padding: var(--cwp-space-8);
+    background: var(--cwp-surface-alt);
+    border-radius: var(--cwp-radius-md);
+    border: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-single__expired p {
+    color: var(--cwp-danger);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    margin-bottom: var(--cwp-space-4);
+}
+
+
+/* =============================================================================
+   COUPON META GRID
+   ============================================================================= */
+
+.cwp-coupon-single__meta {
+    margin-top: var(--cwp-space-6);
+    padding-top: var(--cwp-space-6);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--cwp-space-4);
+    margin-bottom: var(--cwp-space-5);
+}
+
+.cwp-coupon-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-1);
+}
+
+.cwp-coupon-meta-item__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-coupon-meta-item__value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--cwp-text);
+}
+
+.cwp-coupon-meta-item__value a {
+    color: var(--cwp-primary);
+    font-weight: 600;
+}
+
+/* Categories and tags row */
+.cwp-coupon-single__cats,
+.cwp-coupon-single__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--cwp-space-2);
+    font-size: 0.875rem;
+}
+
+
+/* =============================================================================
+   VOTE SECTION
+   ============================================================================= */
+
+.cwp-coupon-single__votes {
+    margin-top: var(--cwp-space-6);
+    padding-top: var(--cwp-space-6);
+    border-top: 1px solid var(--cwp-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--cwp-space-4);
+    text-align: center;
+}
+
+.cwp-coupon-single__votes-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-vote-feedback {
+    font-size: 0.875rem;
+    color: var(--cwp-success);
+    font-weight: 600;
+    padding: var(--cwp-space-2) var(--cwp-space-4);
+    background: #dcfce7;
+    border-radius: var(--cwp-radius-full);
+}
+
+
+/* =============================================================================
+   RELATED COUPONS + FULL CONTENT
+   ============================================================================= */
+
+.cwp-related-coupons {
+    margin-top: var(--cwp-space-10);
+    padding-top: var(--cwp-space-8);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-content {
+    margin-top: var(--cwp-space-8);
+    padding-top: var(--cwp-space-8);
+    border-top: 1px solid var(--cwp-border);
+}
+
+.cwp-coupon-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--cwp-space-5);
+}
+
+
+/* =============================================================================
+   404 PAGE
+   ============================================================================= */
+
+.cwp-404 {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-block: var(--cwp-space-16);
+}
+
+.cwp-404__content {
+    text-align: center;
+    margin-bottom: var(--cwp-space-12);
+}
+
+.cwp-404__emoji {
+    font-size: 4rem;
+    margin-bottom: var(--cwp-space-5);
+    line-height: 1;
+}
+
+.cwp-404__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--cwp-text);
+    margin-bottom: var(--cwp-space-4);
+}
+
+.cwp-404__message {
+    font-size: 1.0625rem;
+    color: var(--cwp-text-muted);
+    margin-bottom: var(--cwp-space-8);
+    line-height: 1.6;
+}
+
+.cwp-404__search {
+    max-width: 440px;
+    margin: 0 auto var(--cwp-space-6);
+}
+
+.cwp-404__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cwp-space-3);
+    flex-wrap: wrap;
+}
+
+.cwp-404__recent {
+    border-top: 1px solid var(--cwp-border);
+    padding-top: var(--cwp-space-8);
+}
+
+.cwp-404__recent h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--cwp-space-5);
+    text-align: center;
+}
+
+
+/* =============================================================================
+   SUBCATEGORY CHIPS (taxonomy-kwl_coupon_cat.php)
+   ============================================================================= */
+
+.cwp-subcat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cwp-space-2);
+    margin-bottom: var(--cwp-space-6);
+}
+
+
+/* =============================================================================
+   POST CARD (index.php blog fallback)
+   ============================================================================= */
+
+.cwp-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-6);
+}
+
+.cwp-post-card {
+    background: var(--cwp-surface);
+    border: 1px solid var(--cwp-border);
+    border-radius: var(--cwp-radius-md);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+}
+
+.cwp-post-card__thumb {
+    display: block;
+    overflow: hidden;
+}
+
+.cwp-post-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--cwp-transition-md);
+}
+
+.cwp-post-card:hover .cwp-post-card__thumb img {
+    transform: scale(1.03);
+}
+
+.cwp-post-card__body {
+    padding: var(--cwp-space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cwp-space-3);
+}
+
+.cwp-post-card__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.cwp-post-card__title a {
+    color: var(--cwp-text);
+    text-decoration: none;
+}
+
+.cwp-post-card__title a:hover {
+    color: var(--cwp-primary);
+}
+
+.cwp-post-card__meta {
+    font-size: 0.8125rem;
+    color: var(--cwp-text-muted);
+}
+
+.cwp-post-card__excerpt {
+    font-size: 0.9375rem;
+    color: var(--cwp-text-muted);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* Post card without thumbnail */
+.cwp-post-card:not(:has(.cwp-post-card__thumb)) {
+    grid-template-columns: 1fr;
+}
+
+
+/* =============================================================================
+   HEADER SCROLLED STATE
+   ============================================================================= */
+
+.cwp-header--scrolled {
+    box-shadow: var(--cwp-shadow-md);
+}
+
+
+/* =============================================================================
+   AD SLOTS
+   ============================================================================= */
+
+.cwp-ad-banner {
+    background: var(--cwp-surface-alt);
+    border-bottom: 1px solid var(--cwp-border);
+    padding-block: var(--cwp-space-3);
+}
+
+.cwp-ad-slot--header,
+.cwp-ad-slot--infeed {
+    text-align: center;
+    padding-block: var(--cwp-space-3);
+}
+
+.cwp-ad-slot--sidebar {
+    text-align: center;
+    margin-bottom: var(--cwp-space-5);
+}
+
+
+/* =============================================================================
+   SEARCH GROUP (search.php)
+   ============================================================================= */
+
+.cwp-search-group + .cwp-search-group {
+    border-top: 1px solid var(--cwp-border);
+}
+
+
+/* =============================================================================
+   RESPONSIVE — SINGLE COUPON
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .cwp-coupon-single {
+        padding: var(--cwp-space-5);
+    }
+
+    .cwp-coupon-single__discount {
+        font-size: 2rem;
+    }
+
+    .cwp-code-box {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cwp-code-box__code {
+        width: 100%;
+        font-size: 1.25rem;
+    }
+
+    .cwp-code-box__copy {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cwp-coupon-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cwp-post-card {
+        grid-template-columns: 1fr;
+    }
+
+    .cwp-post-card__thumb {
+        height: 200px;
+    }
+
+    .cwp-404__links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cwp-404__links .cwp-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

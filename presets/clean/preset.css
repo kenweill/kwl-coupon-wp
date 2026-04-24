@@ -1,0 +1,20 @@
+/*
+ * Clean Preset for KWL Coupon WP
+ * Author: Ken Weill
+ * License: GPL v2
+ */
+
+:root {
+  --cwp-primary:        #2563eb;
+  --cwp-primary-hover:  #1d4ed8;
+  --cwp-primary-light:  #eff6ff;
+  --cwp-accent:         #f59e0b;
+  --cwp-accent-hover:   #d97706;
+  --cwp-bg:             #f8fafc;
+  --cwp-surface:        #ffffff;
+  --cwp-surface-alt:    #f1f5f9;
+  --cwp-border:         #e2e8f0;
+  --cwp-text:           #0f172a;
+  --cwp-text-muted:     #64748b;
+  --cwp-radius:         8px;
+}

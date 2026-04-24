@@ -31,19 +31,20 @@ define( 'KWL_ASSETS',    KWL_URI . '/assets/' );
    ============================================================================= */
 
 // Core functionality
-require_once KWL_INC . 'post-types.php';       // Custom post types: Store, Coupon
-require_once KWL_INC . 'taxonomies.php';        // Categories, Tags
-require_once KWL_INC . 'coupon-functions.php';  // Coupon helpers, reveal logic, expiry
-require_once KWL_INC . 'seo.php';               // Meta tags, Open Graph, canonical
-require_once KWL_INC . 'schema.php';            // JSON-LD structured data
-require_once KWL_INC . 'sitemap.php';           // XML sitemap (no plugin needed)
-require_once KWL_INC . 'admin-settings.php';    // Theme options page
-require_once KWL_INC . 'customizer.php';        // WordPress Customizer controls
-require_once KWL_INC . 'preset-loader.php';     // Style preset switcher
-require_once KWL_INC . 'csv-import.php';        // Bulk coupon/store importer
-require_once KWL_INC . 'widgets.php';           // Sidebar widgets
-require_once KWL_INC . 'slug-handler.php';      // Smart slug generation & duplicate check
-require_once KWL_INC . 'admin-columns.php';     // Custom admin list table columns
+require_once KWL_INC . 'post-types.php';          // Custom post types: Store, Coupon
+require_once KWL_INC . 'taxonomies.php';           // Categories, Tags
+require_once KWL_INC . 'slug-handler.php';         // Smart slug generation & duplicate check
+require_once KWL_INC . 'coupon-functions.php';     // Coupon helpers, reveal logic, expiry
+require_once KWL_INC . 'template-functions.php';   // Pagination helper, supplemental CSS
+require_once KWL_INC . 'seo.php';                  // Meta tags, Open Graph, canonical
+require_once KWL_INC . 'schema.php';               // JSON-LD structured data
+require_once KWL_INC . 'sitemap.php';              // XML sitemap (no plugin needed)
+require_once KWL_INC . 'admin-settings.php';       // Theme options page
+require_once KWL_INC . 'customizer.php';           // WordPress Customizer controls
+require_once KWL_INC . 'preset-loader.php';        // Style preset switcher
+require_once KWL_INC . 'csv-import.php';           // Bulk coupon/store importer
+require_once KWL_INC . 'admin-columns.php';        // Custom admin list table columns
+require_once KWL_INC . 'widgets.php';              // Sidebar widgets
 
 
 /* =============================================================================
@@ -695,3 +696,41 @@ function kwl_disable_cpt_comments( bool $open, int $post_id ): bool {
 
 }
 add_filter( 'comments_open', 'kwl_disable_cpt_comments', 10, 2 );
+
+
+
+/* =============================================================================
+   AJAX: RESET COUPON STATS
+   ============================================================================= */
+
+
+/* =============================================================================
+   AJAX: RESET COUPON STATS
+   ============================================================================= */
+
+/**
+ * Reset click count and vote data for a coupon.
+ * Called from the coupon stats meta box in admin.
+ */
+function kwl_reset_coupon_stats_handler(): void {
+
+    check_ajax_referer( 'kwl_admin_nonce', 'nonce' );
+
+    if ( ! current_user_can( 'edit_posts' ) ) {
+        wp_send_json_error();
+    }
+
+    $post_id = absint( $_POST['post_id'] ?? 0 );
+
+    if ( ! $post_id ) {
+        wp_send_json_error();
+    }
+
+    delete_post_meta( $post_id, '_kwl_click_count'  );
+    delete_post_meta( $post_id, '_kwl_votes_up'     );
+    delete_post_meta( $post_id, '_kwl_votes_down'   );
+
+    wp_send_json_success();
+
+}
+add_action( 'wp_ajax_kwl_reset_coupon_stats', 'kwl_reset_coupon_stats_handler' );

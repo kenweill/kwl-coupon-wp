@@ -1,0 +1,31 @@
+/*
+ * Dark Preset for KWL Coupon WP
+ * Author: Ken Weill
+ * License: GPL v2
+ */
+
+:root {
+  --cwp-primary:        #22c55e;
+  --cwp-primary-hover:  #16a34a;
+  --cwp-primary-light:  #052e16;
+  --cwp-accent:         #f97316;
+  --cwp-accent-hover:   #ea580c;
+  --cwp-bg:             #0f172a;
+  --cwp-surface:        #1e293b;
+  --cwp-surface-alt:    #334155;
+  --cwp-surface-hover:  #334155;
+  --cwp-border:         #334155;
+  --cwp-text:           #f8fafc;
+  --cwp-text-muted:     #94a3b8;
+  --cwp-text-light:     #64748b;
+  --cwp-radius:         8px;
+}
+
+.cwp-footer {
+  background: #1e293b;
+  border-top: 1px solid #334155;
+}
+
+.cwp-header {
+  border-bottom-color: #334155;
+}

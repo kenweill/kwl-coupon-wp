@@ -824,3 +824,68 @@ function kwl_register_go_rewrite(): void {
     add_rewrite_tag( '%kwl_go%', '([a-z0-9\-\.]+)' );
 }
 add_action( 'init', 'kwl_register_go_rewrite' );
+
+
+/* =============================================================================
+   AJAX: LIVE SEARCH
+   ============================================================================= */
+
+/**
+ * AJAX: Live search for stores and coupons.
+ * Used by assets/js/search.js autocomplete dropdown.
+ *
+ * Returns up to 5 stores and 5 coupons matching the query.
+ */
+function kwl_ajax_live_search(): void {
+
+    check_ajax_referer( 'kwl_nonce', 'nonce' );
+
+    $query = sanitize_text_field( $_POST['q'] ?? '' );
+
+    if ( strlen( $query ) < 2 ) {
+        wp_send_json_success( [ 'stores' => [], 'coupons' => [] ] );
+    }
+
+    // Search stores
+    $store_query = new WP_Query( [
+        'post_type'      => 'kwl_store',
+        'post_status'    => 'publish',
+        'posts_per_page' => 5,
+        's'              => $query,
+    ] );
+
+    $stores = [];
+    foreach ( $store_query->posts as $post ) {
+        $stores[] = [
+            'name'         => $post->post_title,
+            'url'          => get_permalink( $post->ID ),
+            'logo'         => kwl_get_store_logo_url( $post->ID, 'kwl-store-logo-sm' ),
+            'initial'      => mb_strtoupper( mb_substr( $post->post_title, 0, 1 ) ),
+            'coupon_count' => kwl_get_store_coupon_count( $post->ID ),
+        ];
+    }
+
+    // Search coupons
+    $coupon_query = new WP_Query( [
+        'post_type'      => 'kwl_coupon',
+        'post_status'    => 'publish',
+        'posts_per_page' => 5,
+        's'              => $query,
+    ] );
+
+    $coupons = [];
+    foreach ( $coupon_query->posts as $post ) {
+        $store_id  = kwl_get_coupon_store_id( $post->ID );
+        $coupons[] = [
+            'title'    => $post->post_title,
+            'url'      => get_permalink( $post->ID ),
+            'store'    => $store_id ? get_the_title( $store_id ) : '',
+            'discount' => kwl_get_coupon_discount( $post->ID ),
+        ];
+    }
+
+    wp_send_json_success( compact( 'stores', 'coupons' ) );
+
+}
+add_action( 'wp_ajax_kwl_live_search',        'kwl_ajax_live_search' );
+add_action( 'wp_ajax_nopriv_kwl_live_search', 'kwl_ajax_live_search' );
