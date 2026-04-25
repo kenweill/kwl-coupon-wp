@@ -119,14 +119,13 @@
 
         e.preventDefault();
 
-        const couponId    = btn.dataset.couponId;
+        const couponId     = btn.dataset.couponId;
         const affiliateUrl = btn.dataset.affiliate;
 
         if ( ! couponId ) return;
 
-        // Already revealed?
+        // Already revealed — copy again + open affiliate on second click
         if ( btn.classList.contains( 'cwp-btn-reveal--revealed' ) ) {
-            // Copy again on second click
             const code = btn.dataset.code || '';
             if ( code ) {
                 await copyToClipboard( code );
@@ -138,20 +137,29 @@
             return;
         }
 
+        // Open affiliate window BEFORE async call to avoid popup blocker.
+        // Browsers only allow window.open() in direct response to a user gesture.
+        // We open it immediately, then set its URL once we have it from AJAX.
+        const affiliateWindow = affiliateUrl
+            ? window.open( 'about:blank', '_blank', 'noopener,noreferrer' )
+            : null;
+
         // Set loading state
-        btn.disabled = true;
+        btn.disabled    = true;
         btn.textContent = '…';
 
         try {
             const resp = await ajaxPost( 'kwl_reveal_coupon', { coupon_id: couponId } );
 
             if ( ! resp.success ) {
-                btn.disabled = false;
+                btn.disabled    = false;
                 btn.textContent = window.kwlData?.revealText || 'Show Code';
+                if ( affiliateWindow ) affiliateWindow.close();
                 return;
             }
 
             const { code, affiliate_url } = resp.data;
+            const dest = affiliate_url || affiliateUrl;
 
             if ( code ) {
                 // Show code on button
@@ -161,26 +169,31 @@
                 btn.disabled = false;
                 btn.setAttribute( 'aria-label', `${ window.kwlData?.copyText || 'Copy' }: ${ code }` );
 
-                // Auto-copy
+                // Copy to clipboard
                 await copyToClipboard( code );
 
-                // Open store in new tab
-                const dest = affiliate_url || affiliateUrl;
-                if ( dest ) {
+                // Navigate the pre-opened window to affiliate URL
+                if ( affiliateWindow && dest ) {
+                    affiliateWindow.location.href = dest;
+                } else if ( dest ) {
                     window.open( dest, '_blank', 'noopener,noreferrer' );
                 }
+
             } else {
-                // Deal type — just redirect
-                btn.disabled = false;
+                // Deal type — no code, just navigate
+                btn.disabled    = false;
                 btn.textContent = window.kwlData?.getDealText || 'Get Deal';
-                if ( affiliate_url ) {
-                    window.open( affiliate_url, '_blank', 'noopener,noreferrer' );
+                if ( affiliateWindow && dest ) {
+                    affiliateWindow.location.href = dest;
+                } else if ( dest ) {
+                    window.open( dest, '_blank', 'noopener,noreferrer' );
                 }
             }
 
         } catch ( err ) {
-            btn.disabled = false;
+            btn.disabled    = false;
             btn.textContent = window.kwlData?.revealText || 'Show Code';
+            if ( affiliateWindow ) affiliateWindow.close();
             console.error( 'KWL reveal error:', err );
         }
 
@@ -201,22 +214,29 @@
 
         revealBtn.addEventListener( 'click', async function () {
 
-            const couponId    = revealBtn.dataset.couponId;
+            const couponId     = revealBtn.dataset.couponId;
             const affiliateUrl = revealBtn.dataset.affiliate;
 
-            revealBtn.disabled   = true;
+            // Open affiliate window immediately (before async) to avoid popup blocker
+            const affiliateWindow = affiliateUrl
+                ? window.open( 'about:blank', '_blank', 'noopener,noreferrer' )
+                : null;
+
+            revealBtn.disabled    = true;
             revealBtn.textContent = '…';
 
             try {
                 const resp = await ajaxPost( 'kwl_reveal_coupon', { coupon_id: couponId } );
 
                 if ( ! resp.success ) {
-                    revealBtn.disabled = false;
+                    revealBtn.disabled    = false;
                     revealBtn.textContent = window.kwlData?.revealText || 'Show Code';
+                    if ( affiliateWindow ) affiliateWindow.close();
                     return;
                 }
 
                 const { code, affiliate_url } = resp.data;
+                const dest = affiliate_url || affiliateUrl;
 
                 // Show the revealed UI
                 if ( codePreview ) codePreview.hidden = true;
@@ -227,20 +247,22 @@
                     codeReveal.hidden    = false;
                 }
 
-                // Auto-copy
+                // Copy to clipboard
                 if ( code ) {
                     await copyToClipboard( code );
                 }
 
-                // Open affiliate in new tab
-                const dest = affiliate_url || affiliateUrl;
-                if ( dest ) {
+                // Navigate pre-opened window to affiliate URL
+                if ( affiliateWindow && dest ) {
+                    affiliateWindow.location.href = dest;
+                } else if ( dest ) {
                     window.open( dest, '_blank', 'noopener,noreferrer' );
                 }
 
             } catch ( err ) {
                 revealBtn.disabled    = false;
                 revealBtn.textContent = window.kwlData?.revealText || 'Show Code';
+                if ( affiliateWindow ) affiliateWindow.close();
                 console.error( 'KWL reveal error:', err );
             }
 

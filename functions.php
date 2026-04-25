@@ -452,7 +452,7 @@ function kwl_ajax_reveal_coupon(): void {
 
     $code        = get_post_meta( $coupon_id, '_kwl_coupon_code', true );
     $type        = get_post_meta( $coupon_id, '_kwl_coupon_type', true );
-    $affiliate   = kwl_get_store_affiliate_url( $coupon_id );
+    $affiliate   = kwl_get_coupon_affiliate_url( $coupon_id );
 
     // Increment click counter
     $clicks = (int) get_post_meta( $coupon_id, '_kwl_click_count', true );
