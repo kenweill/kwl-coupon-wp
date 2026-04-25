@@ -6,6 +6,7 @@
 [![WordPress: 6.0+](https://img.shields.io/badge/WordPress-6.0%2B-blue.svg)](https://wordpress.org)
 [![PHP: 8.0+](https://img.shields.io/badge/PHP-8.0%2B-purple.svg)](https://php.net)
 
+Note: This is still under development, may contain bugs, and is not yet complete.
 ---
 
 ## Why KWL Coupon WP?
