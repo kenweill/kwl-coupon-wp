@@ -54,10 +54,17 @@ require_once KWL_INC . 'widgets.php';              // Sidebar widgets
 /**
  * Register theme support features and set content width.
  */
-function kwl_theme_setup(): void {
-
-    // Allow translated text in theme
+/**
+ * Load theme textdomain early and cleanly.
+ * Separated from kwl_theme_setup to avoid WP 6.7 timing notice.
+ */
+function kwl_load_textdomain(): void {
     load_theme_textdomain( 'kwl-coupon-wp', KWL_DIR . '/languages' );
+}
+add_action( 'after_setup_theme', 'kwl_load_textdomain', 1 );
+
+
+function kwl_theme_setup(): void {
 
     // Feed links in <head>
     add_theme_support( 'automatic-feed-links' );
