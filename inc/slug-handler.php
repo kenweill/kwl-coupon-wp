@@ -260,7 +260,7 @@ add_filter( 'wp_insert_post_data', 'kwl_auto_slug_on_save', 10, 2 );
  * @param  string $slug
  * @return true|WP_Error
  */
-function kwl_validate_slug( string $slug ): true|WP_Error {
+function kwl_validate_slug( string $slug ) {
 
     if ( empty( $slug ) ) {
         return new WP_Error( 'empty_slug', __( 'Slug cannot be empty.', 'kwl-coupon-wp' ) );

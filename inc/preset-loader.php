@@ -224,7 +224,7 @@ add_action( 'wp_ajax_kwl_switch_preset', 'kwl_ajax_switch_preset' );
  * @param  string $css_file  Absolute path to preset.css.
  * @return true|WP_Error
  */
-function kwl_validate_preset_css( string $css_file ): true|WP_Error {
+function kwl_validate_preset_css( string $css_file ) {
 
     if ( ! file_exists( $css_file ) ) {
         return new WP_Error( 'file_not_found', __( 'Preset CSS file not found.', 'kwl-coupon-wp' ) );

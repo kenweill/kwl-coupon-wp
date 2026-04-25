@@ -439,7 +439,7 @@ function kwl_output_pagination_rel(): void {
  * @param bool $echo  Whether to echo or return. Default true.
  * @return string|void
  */
-function kwl_breadcrumbs( bool $echo = true ): string|void {
+function kwl_breadcrumbs( bool $echo = true ) {
 
     $crumbs    = kwl_get_breadcrumb_items();
     $site_name = get_bloginfo( 'name' );
