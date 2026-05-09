@@ -5,7 +5,6 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-blue?logo=wordpress)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-purple?logo=php)
 ![License](https://img.shields.io/badge/License-GPL--2.0-green)
-![Version](https://img.shields.io/github/v/release/kenweill/kwl-coupon-wp?label=Version&color=orange)
 
 > ⚠️ **Note:** This is still under development, may contain bugs, and is not yet complete.
 
