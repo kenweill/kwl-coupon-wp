@@ -1,21 +1,24 @@
-# KWL Coupon WP
+# 🏷️ KWL Coupon WP — WordPress Theme
 
 > A free, open source WordPress theme for coupon and deals websites. Beautiful by default. No paid plugins required.
 
-[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
-[![WordPress: 6.0+](https://img.shields.io/badge/WordPress-6.0%2B-blue.svg)](https://wordpress.org)
-[![PHP: 8.0+](https://img.shields.io/badge/PHP-8.0%2B-purple.svg)](https://php.net)
+![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-blue?logo=wordpress)
+![PHP](https://img.shields.io/badge/PHP-8.0%2B-purple?logo=php)
+![License](https://img.shields.io/badge/License-GPL--2.0-green)
+![Version](https://img.shields.io/github/v/release/kenweill/kwl-coupon-wp?label=Version&color=orange)
 
-## Note: This is still under development, may contain bugs, and is not yet complete.
+> ⚠️ **Note:** This is still under development, may contain bugs, and is not yet complete.
+
 ---
 
-## Why KWL Coupon WP?
+## 💡 Why KWL Coupon WP?
 
 Every popular coupon WordPress theme is either:
-- 💰 Expensive with annual renewal fees
-- 🔒 Closed source — can't see or modify the core logic
-- 🧱 Bloated with features most people don't need
-- 😰 Built for PHP 7 / WP 5 and poorly maintained
+
+- 💰 **Expensive** — with annual renewal fees
+- 🔒 **Closed source** — can't see or modify the core logic
+- 🧱 **Bloated** — packed with features most people don't need
+- 😰 **Outdated** — built for PHP 7 / WP 5 and poorly maintained
 
 **KWL Coupon WP is the alternative:**
 
@@ -28,58 +31,58 @@ Every popular coupon WordPress theme is either:
 
 ---
 
-## Features
+## ✨ Features
 
-### Coupon Management
-- **Custom post types** for Stores and Coupons
-- **Three coupon types**: Code (click to reveal), Deal (no code), Free Shipping
-- **Click-to-reveal** with automatic clipboard copy
-- **Expiry dates** — auto-hide or badge expired coupons
-- **Verified / Exclusive badges**
-- **Works / Doesn't Work voting** with success rate display
-- **Affiliate link cloaking** via `/go/{store-slug}/` redirects
-- **Coupon-specific affiliate URLs** (overrides store default)
+### 🎟️ Coupon Management
+- 📦 **Custom post types** for Stores and Coupons
+- 🔖 **Three coupon types** — Code (click to reveal), Deal (no code), Free Shipping
+- 👆 **Click-to-reveal** with automatic clipboard copy
+- 📅 **Expiry dates** — auto-hide or badge expired coupons
+- ✔️ **Verified / Exclusive badges**
+- 👍 **Works / Doesn't Work voting** with success rate display
+- 🔗 **Affiliate link cloaking** via `/go/{store-slug}/` redirects
+- 🔀 **Coupon-specific affiliate URLs** — overrides store default
 
-### SEO (No Plugin Required)
-- Auto-generated meta titles and descriptions per page type
-- Open Graph + Twitter Card tags
-- JSON-LD structured data (WebSite, Store, Offer, BreadcrumbList, FAQPage)
-- Custom XML sitemap with 4 sub-sitemaps (stores, coupons, categories, pages)
-- Sitemap pings Google and Bing on publish
-- Smart canonical URLs and robots directives (noindex expired coupons)
-- Breadcrumbs on all pages
+### 🔍 SEO (No Plugin Required)
+- 🏷️ Auto-generated meta titles and descriptions per page type
+- 📢 Open Graph + Twitter Card tags
+- 🧩 JSON-LD structured data (WebSite, Store, Offer, BreadcrumbList, FAQPage)
+- 🗺️ Custom XML sitemap with 4 sub-sitemaps (stores, coupons, categories, pages)
+- 📡 Sitemap pings Google and Bing on publish
+- 🔁 Smart canonical URLs and robots directives (noindex expired coupons)
+- 🍞 Breadcrumbs on all pages
 
-### SEO-Friendly Slugs
-- Dots preserved in slugs — `shopee.ph`, `shopee.my`, `shopee.sg` all distinct
-- Auto-generated from store name
-- Duplicate detection with suggested alternatives
+### 🌐 SEO-Friendly Slugs
+- ⚫ Dots preserved in slugs — `shopee.ph`, `shopee.my`, `shopee.sg` all distinct
+- ⚙️ Auto-generated from store name
+- 🔎 Duplicate detection with suggested alternatives
 
-### Design & Customization
-- **3 built-in presets**: Clean (blue/white), Dark (green/dark), Warm (orange/cream)
-- **Full WordPress Customizer** integration — colors, fonts, header, footer
-- **CSS custom properties** throughout — easy to override
-- Sidebar-right or full-width layout
-- Toggleable Google Fonts (6 choices + system fonts)
-- Custom CSS field in theme settings
+### 🎨 Design & Customization
+- 🖌️ **3 built-in presets** — Clean (blue/white), Dark (green/dark), Warm (orange/cream)
+- 🛠️ **Full WordPress Customizer** integration — colors, fonts, header, footer
+- 🎨 **CSS custom properties** throughout — easy to override
+- 📐 Sidebar-right or full-width layout
+- 🔤 Toggleable Google Fonts (6 choices + system fonts)
+- ✏️ Custom CSS field in theme settings
 
-### Admin
-- Visual preset selector with color swatches
-- 40+ theme options across 8 settings sections
-- Custom admin columns for stores and coupons (color-coded expiry, type emoji, click counts)
-- Filter coupons by store, type, and status in admin
-- CSV bulk import for stores and coupons
-- Coupon stats (clicks, votes, success rate) in admin
+### 🛠️ Admin
+- 🎨 Visual preset selector with color swatches
+- ⚙️ 40+ theme options across 8 settings sections
+- 📋 Custom admin columns for stores and coupons (color-coded expiry, type emoji, click counts)
+- 🔽 Filter coupons by store, type, and status in admin
+- 📥 CSV bulk import for stores and coupons
+- 📊 Coupon stats (clicks, votes, success rate) in admin
 
-### Performance
-- Zero jQuery dependency on frontend
-- Lazy-loaded images
-- Preconnect hints for Google Fonts
-- Clean `<head>` (removes WordPress bloat)
-- Preset system uses CSS variables only — no layout re-rendering
+### ⚡ Performance
+- 🚫 Zero jQuery dependency on frontend
+- 🖼️ Lazy-loaded images
+- 🔌 Preconnect hints for Google Fonts
+- 🧹 Clean `<head>` — removes WordPress bloat
+- 🎨 Preset system uses CSS variables only — no layout re-rendering
 
 ---
 
-## Requirements
+## 📋 Requirements
 
 | Requirement | Version |
 |-------------|---------|
@@ -89,15 +92,15 @@ Every popular coupon WordPress theme is either:
 
 ---
 
-## Installation
+## 📦 Installation
 
-### Method 1 — Upload ZIP (Recommended)
+### Option A — Upload ZIP (recommended)
 
-1. Download the latest release ZIP from [GitHub Releases](https://github.com/kenweill/kwl-coupon-wp/releases)
-2. Go to **WordPress Admin → Appearance → Themes → Add New → Upload Theme**
-3. Upload the ZIP file and activate
+1. Download the latest release ZIP from the [Releases](../../releases) page
+2. In your WordPress admin go to **Appearance → Themes → Add New → Upload Theme**
+3. Upload the ZIP file and click **Activate**
 
-### Method 2 — Clone from GitHub
+### Option B — Clone from GitHub
 
 ```bash
 cd /path/to/wordpress/wp-content/themes/
@@ -106,22 +109,17 @@ git clone https://github.com/kenweill/kwl-coupon-wp.git
 
 Then activate via **Appearance → Themes**.
 
-### Post-Installation
+### Post-Installation Setup
 
-1. **Set permalink structure**: Go to **Settings → Permalinks** → select **Post name** → Save
-   *(The theme will show a notice if this isn't set)*
-
-2. **Add stores**: Go to **Stores → Add Store**
-
-3. **Add coupons**: Go to **Coupons → Add Coupon**, link to a store
-
-4. **Set homepage**: Go to **Settings → Reading** → set a static front page, or leave as-is for the latest coupons homepage
-
-5. **Configure theme**: Go to **Appearance → Theme Settings**
+1. **Set permalink structure** — go to **Settings → Permalinks** → select **Post name** → Save *(the theme will show a notice if this isn't set)*
+2. **Add stores** — go to **Stores → Add Store**
+3. **Add coupons** — go to **Coupons → Add Coupon**, link to a store
+4. **Set homepage** — go to **Settings → Reading** → set a static front page, or leave as-is for the latest coupons homepage
+5. **Configure theme** — go to **Appearance → Theme Settings**
 
 ---
 
-## URL Structure
+## 🌐 URL Structure
 
 | URL | Content |
 |-----|---------|
@@ -136,7 +134,7 @@ Then activate via **Appearance → Themes**.
 
 ---
 
-## CSV Import
+## 📥 CSV Import
 
 Bulk-import stores and coupons via **Tools → Import Coupons**.
 
@@ -173,7 +171,7 @@ Download templates from the import page.
 
 ---
 
-## Style Presets
+## 🖌️ Style Presets
 
 Three presets are included. Switch via **Appearance → Theme Settings → Active Style Preset**.
 
@@ -189,38 +187,42 @@ Anyone can contribute a new preset — no PHP knowledge required:
 
 1. Fork the repository
 2. Create `/presets/your-preset-name/`
-3. Add `preset.json` and `preset.css` (see [CONTRIBUTING.md](CONTRIBUTING.md))
+3. Add `preset.json` and `preset.css` — see [CONTRIBUTING.md](CONTRIBUTING.md) for details
 4. Submit a pull request
 
 ---
 
-## Theme Settings
+## ⚙️ Theme Settings
 
 Go to **Appearance → Theme Settings** to configure:
 
-- **General**: Google Fonts toggle, affiliate link cloaking, currency code
-- **Appearance**: Active preset, layout (sidebar/full-width), custom CSS
-- **Homepage**: Hero title/subtitle, featured stores count, categories count, latest coupons count
-- **Coupons**: Coupons per page, expired coupon visibility, expiring soon warning days, voting, reveal behavior
-- **SEO**: Custom sitemap, search engine pinging, default OG image, title separator
-- **Ads**: Enable ad slots, header/sidebar/in-feed ad code
-- **Social**: Twitter, Facebook, Instagram, Pinterest, YouTube URLs
-- **Advanced**: Footer text, header/footer scripts
+| Section | What you can customize |
+|---------|------------------------|
+| **General** | Google Fonts toggle, affiliate link cloaking, currency code |
+| **Appearance** | Active preset, layout (sidebar/full-width), custom CSS |
+| **Homepage** | Hero title/subtitle, featured stores count, categories count, latest coupons count |
+| **Coupons** | Coupons per page, expired coupon visibility, expiring soon warning days, voting, reveal behavior |
+| **SEO** | Custom sitemap, search engine pinging, default OG image, title separator |
+| **Ads** | Enable ad slots, header/sidebar/in-feed ad code |
+| **Social** | Twitter, Facebook, Instagram, Pinterest, YouTube URLs |
+| **Advanced** | Footer text, header/footer scripts |
 
 ---
 
-## WordPress Customizer
+## 🖥️ WordPress Customizer
 
 Go to **Appearance → Customize → KWL Coupon WP** for live preview of:
 
-- **Colors**: Primary, accent, background, card surface, text, navigation background
-- **Typography**: Font family, base size, border radius
-- **Header**: Sticky toggle, search visibility, category nav visibility
-- **Footer**: Brand description, copyright text, background color
+| Section | What you can customize |
+|---------|------------------------|
+| **Colors** | Primary, accent, background, card surface, text, navigation background |
+| **Typography** | Font family, base size, border radius |
+| **Header** | Sticky toggle, search visibility, category nav visibility |
+| **Footer** | Brand description, copyright text, background color |
 
 ---
 
-## Hooks & Filters
+## 🔧 Hooks & Filters
 
 KWL Coupon WP is built to be extensible via standard WordPress hooks.
 
@@ -238,7 +240,7 @@ add_filter( 'kwl_store_meta_description', function( $desc, $store_id ) {
 
 ---
 
-## Child Theme Support
+## 👶 Child Theme Support
 
 KWL Coupon WP supports child themes. All template files use `get_stylesheet_directory()` for overridable assets.
 
@@ -256,45 +258,38 @@ KWL Coupon WP supports child themes. All template files use `get_stylesheet_dire
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
-- Submitting bug reports
-- Proposing new features
-- Adding new style presets
-- Contributing code via pull requests
+Contributions, issues, and feature requests are welcome!
 
----
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a Pull Request
 
-## License
-
-KWL Coupon WP is licensed under the [GNU General Public License v2](LICENSE).
-
-You are free to use, modify, and distribute this theme as long as you maintain the GPL v2 license. This means any derivative works must also be released under GPL v2.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting bug reports, proposing features, adding style presets, and contributing code.
 
 ---
 
-## Credits
+## 📄 License
 
-- Built by [Ken Weill](https://github.com/kenweill)
-- Inspired by FameTheme Coupon WP's minimal approach
-- Icons: inline SVG from [Heroicons](https://heroicons.com) (MIT license)
-- Font: [Figtree](https://fonts.google.com/specimen/Figtree) via Google Fonts (OFL license)
+Distributed under the **GPL-2.0** license. See [`LICENSE`](LICENSE) for more information.
+
+You are free to use, modify, and distribute this theme as long as you maintain the GPL v2 license. Any derivative works must also be released under GPL v2.
 
 ---
 
-## Changelog
+## 📋 Changelog
 
-### 1.0.0 (Initial Release)
-- Custom post types: Stores, Coupons
-- Custom taxonomies: Categories, Tags
-- SEO system: meta tags, Open Graph, schema markup, XML sitemap
-- Style preset system: Clean, Dark, Warm
-- Full WordPress Customizer integration
-- CSV bulk import for stores and coupons
-- Live search autocomplete
-- Click-to-reveal coupon codes
-- Works/Doesn't Work voting
-- Affiliate link cloaking
-- Admin list table enhancements
-- 5 custom sidebar widgets
+See [CHANGELOG.md](CHANGELOG.md) for full version history.
+
+---
+
+## 🙏 Credits
+
+See [CREDITS.md](CREDITS.md) for third-party attributions and licenses.
+
+---
+
+> Built with ❤️ as a free, open source alternative to expensive coupon themes. No paid plugins, no annual fees — just a clean, modern theme that works.
